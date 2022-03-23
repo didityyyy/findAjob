@@ -18,25 +18,21 @@ if (isset($_GET['logout'])) {
 
 if (isset($_POST['btn-login'])) {
 
-    $username = mysqli_real_escape_string($db, $_POST['username-login']);
-    if ($username == "admin") {
-        $password = mysqli_real_escape_string($db, $_POST['password-login']);
-    } else {
-        $password = md5(mysqli_real_escape_string($db, $_POST['password-login']));
-    }
+    $username = $_POST['username-login'];
+    $password = $_POST['password-login'];
 
     if (empty($username)) {
-        // array_push($errors, "Моля въведете потребителското си име!");
-        echo "Моля въведете потребителското си име!";
+        $errors['username-login'] = "Моля въведете потребителското си име!";
     }
     if (empty($password)) {
-        // array_push($errors, "Моля въведете парола!");
-        echo "Моля въведете парола!";
+        $errors['password-login'] = "Моля въведете парола!";
     }
 
     if (count($errors) == 0) {
+        $password = md5($password);
         $query = "SELECT * FROM tm_users WHERE username='$username' AND password='$password'";
-        $results = mysqli_query($db, $query);
+        
+        $results = $DB->query($query);
         if (mysqli_num_rows($results) == 1) {
             while ($row = $results->fetch_assoc()) {
                 $_SESSION['role'] = $row["role_id"];
@@ -46,7 +42,6 @@ if (isset($_POST['btn-login'])) {
             header('location: /DR/view/front/home.php');
         } else {
             array_push($errors, "Неправилно потребителско име и/или неправилна парола!");
-            echo "NO";
         }
     }
 }

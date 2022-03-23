@@ -1,6 +1,6 @@
+<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/DR/view/layout/header.php"; ?>
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/DR/src/controllers/front/signupController.php'; ?>
 
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/DR/view/layout/header.php"; ?>
 <div class="signup-bg flex-x">
     <div class="signup flex-y">
         <div class="signup-toggle">
@@ -11,6 +11,10 @@
             <div class="content active" id="signup-client">
                 <p>Регистрация</p>
                 <form action="" method="post" class="flex-y">
+
+                <?php include $_SERVER['DOCUMENT_ROOT'] . "/DR/src/messages/error.php"; ?>
+                <?php include $_SERVER['DOCUMENT_ROOT'] . "/DR/src/messages/success.php"; ?>
+
                     <div class="form-group">
                         <label for="firstnameClient">Име</label>
                         <input type="text" name="firstnameClient">
@@ -53,6 +57,10 @@
             <div class="content" id="signup-company">
                 <p>Регистрация</p>
                 <form action="" method="post" class="flex-y" enctype="multipart/form-data">
+
+                <?php //include $_SERVER['DOCUMENT_ROOT']. "/DR/src/messages/error.php"; ?>
+                <?php //include $_SERVER['DOCUMENT_ROOT'] . "/DR/src/messages/success.php"; ?>
+
                     <div class="form-group">
                         <label for="firstnameCompany">Име</label>
                         <input type="text" name="firstnameCompany">

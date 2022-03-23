@@ -3,8 +3,10 @@
 <div class="login-bg height-bg flex-x">
     <div class="login flex-y">
         <p>Вход</p>
-        <?php include $_SERVER['DOCUMENT_ROOT']. "/DR/src/messages/error.php"; ?>
         <form action="" method="post" class="flex-y">
+
+            <?php include $_SERVER['DOCUMENT_ROOT'] . "/DR/src/messages/error.php"; ?>
+            
             <div class="form-group">
                 <label for="username-login">Потребителско име</label>
                 <input type="text" name="username-login" id="username-login">

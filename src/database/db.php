@@ -168,6 +168,10 @@ class Database {
     //     return mysqli_query($connection,$sql);
     // }
 
+    function str($param) {
+        return "'$param'";
+    }
+
     function connect()
     {
         return mysqli_connect($this->host,$this->username,$this->password,$this->db);
@@ -215,7 +219,7 @@ class Database {
             $queryValues .= ($value . ",");
         }
 
-        $queryKeies     = substr($queryKeys, 0, strlen($queryKeys) - 1);
+        $queryKeys     = substr($queryKeys, 0, strlen($queryKeys) - 1);
         $queryValues    = substr($queryValues, 0, strlen($queryValues) - 1);
 
         $query = "INSERT INTO $tableName($queryKeys) VALUES($queryValues)";

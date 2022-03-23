@@ -1,5 +1,5 @@
 <?php if (count($errors) > 0) : ?>
-    <div class="alert alert-danger" style="margin:auto;">
+    <div class="message error">
         <?php foreach ($errors as $error) : ?>
             <li><?php echo $error; ?> </li>
         <?php endforeach; ?>
