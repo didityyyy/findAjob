@@ -1,0 +1,287 @@
+/* HOME */
+
+.main-bg {
+    width: 100%;
+    /* height: 100%; */
+    position: relative;
+    overflow: hidden;
+}
+
+.main-bg img{
+    width: 100%;
+    object-fit: cover;
+}
+
+.title-main {
+    position: absolute;
+    font-family: 'Montserrat Alternates', sans-serif;
+    color: #C8CFF8;
+    font-size: 50px;
+    text-shadow: 2px 2px 0 #000000, 2px -2px 0 rgb(47, 49, 175), -2px 2px 0 rgb(47, 49, 175), -2px -2px 0 rgb(47, 49, 175), 2px 0px 0 rgb(47, 49, 175), 0px 2px 0 rgb(47, 49, 175), -2px 0px 0 rgb(47, 49, 175), 0px -2px 0 rgb(47, 49, 175);
+    text-align: center;
+}
+
+/* END HOME */
+
+/* LOGIN */
+
+.login-bg {
+    background-image: url('/DR/assets/images/login.jpg');
+    width: 100%;
+    background-size: cover;
+    z-index: 1;
+}
+
+.login, .signup{
+    border-radius: 20px;
+    padding: 30px;
+    background-color: #c8cff8;
+    box-shadow: 0px 2px 20px 5px #2f31af;
+}
+
+.login p:first-child, .signup p:first-child {
+    font-size: 30px;
+    text-align: center;
+}
+
+.login form, .signup form{
+    border-top: 3px #000 solid;
+    padding-top: 15px;
+}
+
+.login label , .form-group label{
+    align-self: flex-start;
+    margin-left: 10px;
+}
+
+.login input, .login #btn-login, .signup input, .signup #btn-signup-client, .signup #btn-signup-company, .signup-content #upload-logo + label {
+    width: 300px;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 8px;
+    font-size: 18px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.login #btn-login, .signup #btn-signup-client, .signup #btn-signup-company, .contact-us #contact-send{
+    background-color: #212592;
+    color: #fff;
+    border: 2px solid #2f31af;
+    transition: 0.5s ease;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.login #btn-login:hover, .signup #btn-signup-client:hover, .signup #btn-signup-company:hover, .contact-us #contact-send:hover{
+    letter-spacing: 1px;
+    background-color: #0b0d41;
+}
+
+.login a, .signup a{
+    text-decoration: none;
+}
+.login a:hover, .signup a:hover{
+    text-decoration: underline;
+}
+
+/* END LOGIN */
+
+/* REGISTRATION */
+
+.signup-bg{
+    background-image: url('/DR/assets/images/login.jpg');
+    width: 100%;
+    background-size: cover;
+}
+
+.signup {
+    margin: 30px;
+}
+
+.signup-toggle {
+   display: flex;
+   margin-bottom: 15px;
+}
+
+.signup-toggle button{
+    letter-spacing: 2px;
+    border: none;
+    padding: 10px;
+    background-color: #c8cff8;
+    color: #232c3d;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.signup-toggle button.active{
+    background-color: #43468d;
+    color: #fff;
+    border-radius: 5px 0 5px 0;
+}
+
+.signup-toggle button:hover{
+    background-color: rgba(135, 133, 255, 0.644);
+}
+
+.signup-toggle button.active:hover{
+    background-color: #43468d;
+}
+
+.signup-content .content{
+    display: none;
+}
+
+.signup-content .content.active{
+    display: block;
+}
+
+.form-check input {
+    width: auto;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.signup-content #upload-logo{
+    display: none;
+}
+
+.signup-content #upload-logo + label{
+    background-color: #4447a0;
+    color: #fff;
+    border: 2px solid #2f31af;
+    transition: 0.5s ease;
+    cursor: pointer;
+    text-align: center;
+}
+
+.signup-content .file-name{
+    max-width: 300px;
+    margin-left: 10px;
+    overflow-wrap: break-word;
+}
+
+
+.signup-content #upload-logo + label i {
+    margin-right: 10px;
+}
+
+/* END REGISTRATION */
+
+/* CONTACTS */
+
+.contacts{
+    width: 100%;
+    background-color: #c8cff8;
+}
+
+.contact-us{
+    position: relative;
+    background: #fff;
+    width: 30%;
+    min-height: 45%;
+    -moz-box-shadow: inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow: inset 0 0 10px #000000;
+    padding-left: 15%;
+    padding-top: 3%;
+}
+
+.contact-details{
+    position: absolute;
+    background: rgb(85, 85, 177);
+    width: 20%;
+    height: 50%;
+    margin-left: -40%;
+    -moz-box-shadow: 0 0 10px #000000;
+    -webkit-box-shadow: 0 0 10px #000000;
+    box-shadow: 0 0 10px #000000;
+    padding: 20px;
+    color: #fff;
+    justify-content: space-evenly;
+}
+
+.contact-us h4, .contact-details h4{
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 25px;
+    text-shadow: -2px 0 rgb(0 0 0 / 50%);
+}
+
+.contact-us h5{
+    color: rgba(110, 110, 124, 0.808);
+    margin: 0 0 5% 0;
+}
+
+.contact-us form{
+    margin-bottom: 5%;
+}
+
+.contact-us input, .contact-us textarea, .contact-us #contact-send{
+    width: 150%;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 8px;
+    outline: none;
+    box-sizing: border-box;
+    border: 1px solid #000;
+    font-size: 18px;
+}
+
+.contact-us textarea{
+    height: 150px;
+    resize: none;
+    font-family: 'Manrope', sans-serif;
+}
+
+.contact-details .socials div{ 
+    margin: 10px;
+    font-size: 20px;
+}
+
+.contact-details .socials i{
+    margin-right: 5px;
+}
+
+/* END CONTACTS */
+
+/* FORM ERROR */
+
+.form-group .fa-check-circle, .form-group .fa-exclamation-circle{
+    position: absolute;
+    top: 44px;
+    right: 15px;
+    display: none;
+}
+
+.form-group small{
+    /* visibility: hidden; */
+    display: none;
+    margin: 2px 0;
+}
+
+.form-group .success i.fa-check-circle{
+    color: #2ecc71;
+    display: block;
+}
+
+.form-group .error i.fa-exclamation-circle{
+    color: #e74c3c;
+    display: block;
+}
+
+.form-group .success input{
+    border-color: #2ecc71;
+}
+
+.form-group .error input{
+    border-color: #e74c3c;
+}
+
+/* END FORM ERROR */
