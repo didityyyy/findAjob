@@ -10,6 +10,7 @@
 .main-bg img{
     width: 100%;
     object-fit: cover;
+    height: inherit;
 }
 
 .title-main {
@@ -185,6 +186,7 @@
     background: #fff;
     width: 30%;
     min-height: 45%;
+    max-height: 90%;
     -moz-box-shadow: inset 0 0 10px #000000;
     -webkit-box-shadow: inset 0 0 10px #000000;
     box-shadow: inset 0 0 10px #000000;
@@ -196,7 +198,7 @@
     position: absolute;
     background: rgb(85, 85, 177);
     width: 20%;
-    height: 50%;
+    height: 40%;
     margin-left: -40%;
     -moz-box-shadow: 0 0 10px #000000;
     -webkit-box-shadow: 0 0 10px #000000;
@@ -224,14 +226,14 @@
 }
 
 .contact-us input, .contact-us textarea, .contact-us #contact-send{
-    width: 150%;
+    width: 300px;
     border-radius: 5px;
-    padding: 10px;
-    margin: 8px;
+    padding: 6px;
+    margin: 5px;
     outline: none;
     box-sizing: border-box;
     border: 1px solid #000;
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .contact-us textarea{
@@ -271,6 +273,7 @@
     color: #08420d;
     background-color: #b0f7b4;
     border-color: #60c05d;
+    text-align: center;
 }
 
 

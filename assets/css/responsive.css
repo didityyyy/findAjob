@@ -1,3 +1,18 @@
+@media screen and (max-width: 1250px) {
+
+    .contact-details .socials div {
+        font-size: 17px;
+    }
+
+    .contact-details h4 {
+        letter-spacing: 1px;
+        font-size: 20px;
+        text-align: center;
+    }
+
+}
+
+
 @media screen and (max-width: 750px) {
 
     /* MENU */
@@ -55,6 +70,33 @@
     }
 
     /* END MENU */
+
+    /* CONTACT */
+
+    .contacts{
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column; 
+    }
+
+    .contact-us{
+      width: 80%;
+      padding: 15px;
+      margin: 5% 0 10% 0;
+      height: 100%;
+      min-height: 60%;
+    }
+
+    .contact-details{
+        position: relative;
+        margin: 0 0 5% 0;
+        width: 80%;
+        padding: 15px;
+    }
+
+    /* END CONTACT */
+
+
 
     .footer {
         flex-direction: column;

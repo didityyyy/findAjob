@@ -54,6 +54,24 @@ $(document).ready(function () {
         dropdownElements.slideUp(100);
     });
 
+    function removeHeight(){
+        if($(window).width()<750){
+            var div = document.querySelector('div');
+                $('.contacts').removeClass('height-bg');
+                console.log("5555555");
+                $('.contacts').attr('style','');
+        }
+        else {
+            $('.contacts').css("height", "calc(100vh - " + height + "px)");
+        }
+    }
+
+    $(window).resize(function(){
+        removeHeight();
+    });
+
+    removeHeight();
+
 });
 
 

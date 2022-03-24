@@ -14,8 +14,8 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="/DR/assets/css/layout.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="/DR/assets/css/responsive.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="/DR/assets/css/style.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="/DR/assets/css/responsive.css?v=<?php echo time(); ?>">
 
 
     <title>Find a Job</title>

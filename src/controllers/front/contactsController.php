@@ -1,6 +1,7 @@
 <?php 
 
 $errors = array();
+$message = NULL;
 
 if (isset($_POST['contact-send'])) {
 
@@ -10,22 +11,22 @@ $visitor_message       = $_POST['contact-question'];
 
 if (empty($visitor_name)) {
     $errors['contact-name'] = "Моля въведете Име";
-    echo "Моля въведете Име";
+    // echo "Моля въведете Име";
 }
 
 if (empty($visitor_email)) {
     $errors['contact-email'] = "Моля въведете Имейл";
-    echo "Моля въведете Имейл";
+    // echo "Моля въведете Имейл";
 }
 
 if (empty($visitor_message)) {
     $errors['contact-question'] = "Моля напишете вашето запитване";
-    echo "Моля напишете вашето запитване";
+    // echo "Моля напишете вашето запитване";
 }
 
 if (!filter_var($visitor_email, FILTER_VALIDATE_EMAIL)) {
     $errors['contact-email'] = "Имейла е невалиден.";
-    echo "Имейла е невалиден.";
+    // echo "Имейла е невалиден.";
 }
 
 if (count($errors) === 0) {
@@ -43,7 +44,7 @@ if (count($errors) === 0) {
     $headers .= "Reply-To $visitor_email \r\n";
     mail($to, $email_subject, $email_body, $headers);
 
-    // $message = "Вашето запитване е изпратено успешно!";
-    echo "Вашето запитване е изпратено успешно!";
+    $message = "Вашето запитване е изпратено успешно!";
+    // echo "Вашето запитване е изпратено успешно!";
 }
 }

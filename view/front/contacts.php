@@ -6,6 +6,10 @@
         <h4>Свържете с нас</h4>
         <h5>Задайте свободно вашия въпрос!</h5>
         <form method="POST" class="flex-y">
+
+            <?php include $_SERVER['DOCUMENT_ROOT'] . "/DR/src/messages/error.php"; ?>
+            <?php include $_SERVER['DOCUMENT_ROOT'] . "/DR/src/messages/success.php"; ?>
+
             <input type="text" name="contact-name" id="contact-name" placeholder="Вашето име...">
             <input type="email" name="contact-email" id="contact-email" placeholder="Вашият имейл...">
             <textarea id="contact-question" name="contact-question" placeholder="Вашият въпрос..."></textarea>
@@ -22,5 +26,13 @@
         </div>
     </div>
 </div>
+
+<script>
+//on reload not to resubmit form
+if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
+}
+</script>
+
 
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/DR/view/layout/footer.php"; ?>
