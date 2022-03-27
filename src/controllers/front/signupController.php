@@ -1,16 +1,7 @@
 <?php
 
 require_once  $_SERVER['DOCUMENT_ROOT'] . '/DR/src/database/db.php';
-
-// $query = "SELECT * FROM tm_users";
-
-// $db = new Database;
-
-// $result = $db->query($query);
-
-// foreach($result as $row) {
-//     echo $row['username'];
-// }
+require_once  $_SERVER['DOCUMENT_ROOT'] . '/DR/src/database/emailVerification.php';
 
 $errors = array();
 $message = NULL;
@@ -96,11 +87,12 @@ if (isset($_POST['signup-btn-client'])) {
     if (count($errors) === 0) {
         $password = md5($passwordRegisterClient);
         $role = 4;
+        $token = bin2hex(random_bytes(50));
 
         $insert1 = $DB->insert('tm_users', array(
             'username' => $DB->str($usernameRegisterClient),
             'password' => $DB->str($password),
-            'role_id'  => $DB->str($role)
+            'role_id'  => $role
         ));
 
         $query1 = $DB->query($insert1);
@@ -113,15 +105,17 @@ if (isset($_POST['signup-btn-client'])) {
                 'username' => $DB->str($usernameRegisterClient),
                 'firstname' => $DB->str($firstnameClient),
                 'lastname' => $DB->str($lastnameClient),
-                'email' => $DB->str($emailClient)
+                'email' => $DB->str($emailClient),
+                'token' => $DB->str($token)
             ));
     
             $query2 = $DB->query($insert2);
 
-            // $insert2 = "INSERT INTO tb_register_client (username,firstname,lastname,email) VALUES ('$usernameRegisterClient', '$firstnameClient', '$lastnameClient','$emailClient')";
+            // $insert2 = "INSERT INTO tb_register_client (username,firstname,lastname,email,token) VALUES ('$usernameRegisterClient', '$firstnameClient', '$lastnameClient','$emailClient','$token')";
             // $query2 = mysqli_query($db, $insert2) or die(mysqli_error($db));
             if ($query2 == 1) {
-                $message = "Регистрирахте се успешно!";
+                $message = "Регистрирахте се успешно! <br> <b>Моля потвърдете вашата регистрация чрез вашата поща! </b> ";
+                sendVerificationEmail($emailClient,$token);
             }
         }
     }

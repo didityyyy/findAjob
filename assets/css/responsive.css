@@ -1,3 +1,9 @@
+@media screen and (min-height: 1000px){
+    .contact-details {
+        height: 30%;
+    }
+}
+
 @media screen and (max-width: 1250px) {
 
     .contact-details .socials div {
@@ -11,6 +17,23 @@
     }
 
 }
+
+@media screen and (max-width: 1100px) {
+
+    .contact-us{
+        width: 40%;
+    }
+
+    .contact-us input, .contact-us textarea , .contact-us #contact-send {
+        width: 250px;
+    }
+
+    .contact-details{
+        margin-left: -55%;
+    }
+
+}
+
 
 
 @media screen and (max-width: 750px) {
@@ -94,6 +117,9 @@
         padding: 15px;
     }
 
+    .contact-us form{
+        margin-bottom: 0;
+    }
     /* END CONTACT */
 
 
@@ -115,4 +141,16 @@
     .footer ul:first-child {
         align-items: center;
     }
+}
+
+@media screen and (max-width: 300px) {
+
+    .contact-us input, .contact-us textarea , .contact-us #contact-send {
+        width: 200px;
+    }
+
+    .contact-us h4, .contact-us h5{
+        text-align: center;
+    }
+
 }

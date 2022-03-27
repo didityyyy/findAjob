@@ -32,89 +32,98 @@
             <!-- GUEST MODE -->
             <?php if (!isset($_SESSION['role'])) : ?>
 
-            <div id="open"><i class="fa-solid fa-bars"></i></div>
-            <ul class="menu" id="menu-wrap">
-                <div id="close"><i class="fa-solid fa-xmark"></i></div>
-                <li><a href="/DR/view/front/home.php">Начало</a></li>
-                <li><a href="/DR/view/front/login.php">Вход</a></li>
-                <li><a href="/DR/view/front/signup.php">Регистрация</a></li>
-                <li><a href="/DR/view/front/contacts.php">Контакти</a></li>
-            </ul>
+                <div id="open"><i class="fa-solid fa-bars"></i></div>
+                <ul class="menu" id="menu-wrap">
+                    <div id="close"><i class="fa-solid fa-xmark"></i></div>
+                    <li><a href="/DR/view/front/home.php">Начало</a></li>
+                    <li><a href="/DR/view/front/login.php">Вход</a></li>
+                    <li><a href="/DR/view/front/signup.php">Регистрация</a></li>
+                    <li><a href="/DR/view/front/contacts.php">Контакти</a></li>
+                </ul>
 
             <?php endif; ?>
 
             <?php if (isset($_SESSION['role'])) : ?>
-            <!-- HR MODE  -->
-            <?php if ($_SESSION['role'] == 1) :?>
+                <!-- HR MODE  -->
+                <?php if ($_SESSION['role'] == 1) : ?>
 
-            <div id="open"><i class="fa-solid fa-bars"></i></div>
-            <ul class="menu" id="menu-wrap">
-                <div id="close"><i class="fa-solid fa-xmark"></i></div>
-                <li class="dropdown-menu">
-                    <a>Опции<i class="fa-solid fa-angle-down"></i></a>
-                    <ul class="dropdown-elements">
-                        <li><a href="">Кандидатури</a></li>
-                        <hr>
-                        <li><a href="">Обяви</a></li>
+                    <div id="open"><i class="fa-solid fa-bars"></i></div>
+                    <ul class="menu" id="menu-wrap">
+                        <div id="close"><i class="fa-solid fa-xmark"></i></div>
+                        <li class="dropdown-menu">
+                            <a>Опции<i class="fa-solid fa-angle-down"></i></a>
+                            <ul class="dropdown-elements">
+                                <li><a href="">Кандидатури</a></li>
+                                <hr>
+                                <li><a href="">Обяви</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Фирми</a></li>
+                        <li><a href="/DR/view/front/home.php?logout=1"><i class="fas fa-sign-out-alt"></i></a></li>
                     </ul>
-                </li>
-                <li><a href="#">Фирми</a></li>
-                <li><a href="/DR/view/front/home.php?logout=1"><i class="fas fa-sign-out-alt"></i></a></li>
-            </ul>
 
-            <?php endif; ?>
+                <?php endif; ?>
 
-            <!-- ADMIN MODE -->
-            <?php if ($_SESSION['role'] == 2) :?>
+                <!-- ADMIN MODE -->
+                <?php if ($_SESSION['role'] == 2) : ?>
 
-            <div id="open"><i class="fa-solid fa-bars"></i></div>
-            <ul class="menu" id="menu-wrap">
-                <div id="close"><i class="fa-solid fa-xmark"></i></div>
-                <li><a href="#">Добавяне на категории</a></li>
-                <li class="dropdown-menu">
-                    <a>Служители<i class="fa-solid fa-angle-down"></i></a>
-                    <ul class="dropdown-elements">
-                        <li><a href="">Списък Служители</a></li>
-                        <hr>
-                        <li><a href="">Добавяне на служител</a></li>
+                    <div id="open"><i class="fa-solid fa-bars"></i></div>
+                    <ul class="menu" id="menu-wrap">
+                        <div id="close"><i class="fa-solid fa-xmark"></i></div>
+                        <li><a href="#">Добавяне на категории</a></li>
+                        <li class="dropdown-menu">
+                            <a>Служители<i class="fa-solid fa-angle-down"></i></a>
+                            <ul class="dropdown-elements">
+                                <li><a href="">Списък Служители</a></li>
+                                <hr>
+                                <li><a href="">Добавяне на служител</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/DR/view/front/home.php?logout=1"><i class="fas fa-sign-out-alt"></i></a></li>
                     </ul>
-                </li>
-                <li><a href="/DR/view/front/home.php?logout=1"><i class="fas fa-sign-out-alt"></i></a></li>
-            </ul>
+
+                <?php endif; ?>
+
+                <!-- COMPANY MODE -->
+                <?php if ($_SESSION['role'] == 3) : ?>
+
+                    <div id="open"><i class="fa-solid fa-bars"></i></div>
+                    <ul class="menu" id="menu-wrap">
+                        <div id="close"><i class="fa-solid fa-xmark"></i></div>
+                        <li><a href="#">Профил</a></li>
+                        <li><a href="#">Добави обява</a></li>
+                        <li><a href="#">Кандидатури</a></li>
+                        <li><a href="/DR/view/front/home.php?logout=1"><i class="fas fa-sign-out-alt"></i></a></li>
+                    </ul>
+
+                <?php endif; ?>
+
+                <!-- USERS MODE -->
+                <?php if ($_SESSION['role'] == 4) : ?>
+
+                    <div id="open"><i class="fa-solid fa-bars"></i></div>
+                    <ul class="menu" id="menu-wrap">
+                        <div id="close"><i class="fa-solid fa-xmark"></i></div>
+                        <li><a href="#">Начало</a></li>
+                        <li><a href="#">Профил</a></li>
+                        <li><a href="#">Обяви</a></li>
+                        <li><a href="/DR/view/front/home.php?logout=1"><i class="fas fa-sign-out-alt"></i></a></li>
+                    </ul>
+
+                <?php endif; ?>
 
             <?php endif; ?>
 
-            <!-- COMPANY MODE -->
-            <?php if ($_SESSION['role'] == 3) : ?>
 
-            <div id="open"><i class="fa-solid fa-bars"></i></div>
-            <ul class="menu" id="menu-wrap">
-                <div id="close"><i class="fa-solid fa-xmark"></i></div>
-                <li><a href="#">Профил</a></li>
-                <li><a href="#">Добави обява</a></li>
-                <li><a href="#">Кандидатури</a></li>
-                <li><a href="/DR/view/front/home.php?logout=1"><i class="fas fa-sign-out-alt"></i></a></li>
-            </ul>
 
-            <?php endif; ?>
 
-            <!-- USERS MODE -->
-            <?php if ($_SESSION['role'] == 4) : ?>
-
-            <div id="open"><i class="fa-solid fa-bars"></i></div>
-            <ul class="menu" id="menu-wrap">
-                <div id="close"><i class="fa-solid fa-xmark"></i></div>
-                <li><a href="#">Начало</a></li>
-                <li><a href="#">Профил</a></li>
-                <li><a href="#">Обяви</a></li>
-                <li><a href="/DR/view/front/home.php?logout=1"><i class="fas fa-sign-out-alt"></i></a></li>
-            </ul>
-
-            <?php endif; ?>
-
-            <?php endif; ?>
-
-            
         </div>
+        <?php if (isset($_SESSION['username'])) : ?>
+        <div class="nav-bottom">
+            <div class="user">
+                <h5> Welcome, <?php echo $_SESSION['username']; ?> </h5>
+            </div>
+        </div>
+        <?php endif; ?>
 
         <div class="inner-container flex-x">

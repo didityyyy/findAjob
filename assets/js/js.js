@@ -1,4 +1,11 @@
 $(document).ready(function () {
+
+    //on reload not to resubmit form
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+
+
     // var btn = $('#menu-phone');
     var open = $('#open');
     var close = $('#close');
@@ -54,19 +61,19 @@ $(document).ready(function () {
         dropdownElements.slideUp(100);
     });
 
-    function removeHeight(){
-        if($(window).width()<750){
+    function removeHeight() {
+        if ($(window).width() < 750) {
             var div = document.querySelector('div');
-                $('.contacts').removeClass('height-bg');
-                console.log("5555555");
-                $('.contacts').attr('style','');
+            $('.contacts').removeClass('height-bg');
+            console.log("5555555");
+            $('.contacts').attr('style', '');
         }
         else {
             $('.contacts').css("height", "calc(100vh - " + height + "px)");
         }
     }
 
-    $(window).resize(function(){
+    $(window).resize(function () {
         removeHeight();
     });
 

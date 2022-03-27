@@ -183,18 +183,24 @@ class Database {
         return mysqli_query($conn, $sqlQuery);
     }
 
-    function fetch($tableName) {
+    function querySelectAll($tableName){
 
-        $resultArray    = array();
-        $query          = "SELECT * FROM $tableName";
-        $fetchResponse  = $this->query($query);
-
-        while($data = mysqli_fetch_assoc($fetchResponse)) {
-            array_push($resultArray, $data);
-        }
-
-        return $resultArray;
+        $conn= $this->connect();
+        return mysqli_query($conn, "SELECT * FROM $tableName");
     }
+
+    // function fetch($tableName) {
+
+    //     $resultArray    = array();
+    //     $query          = "SELECT * FROM $tableName";
+    //     $fetchResponse  = $this->query($query);
+
+    //     while($data = mysqli_fetch_assoc($fetchResponse)) {
+    //         array_push($resultArray, $data);
+    //     }
+
+    //     return $resultArray;
+    // }
 
     function fetchQuery($query) {
 
@@ -206,6 +212,15 @@ class Database {
         }
 
         return $resultArray;        
+    }
+
+    function selectAll($tableName) {
+
+        $this->queryBuilderString = "";
+
+        $query = "SELECT * FROM $tableName";
+        $this->queryBuilderString .= "$query ";
+        return $this;
     }
 
     function insert($tableName, $queryPropertyCollection) {
@@ -224,12 +239,15 @@ class Database {
 
         $query = "INSERT INTO $tableName($queryKeys) VALUES($queryValues)";
 
-        $this->query($query);
+        // $this->query($query);
+        return $query;
     }
 
     // UPDATE {table_name} 
     // SET column1 = value1, column2 = value2
     function update($tableName, $queryPropertyCollection) {
+
+        $this->queryBuilderString = "";
 
         $updateQueryKeyValue = "";
         foreach ($queryPropertyCollection as $key => $value) {
@@ -240,7 +258,7 @@ class Database {
         $query = "UPDATE $tableName SET $updateQueryKeyValue ";
         // self::query($query);
         $this->queryBuilderString .= " $query";
-        return $this->Database;
+        return $this;
     }
 
     // DELETE {table_name}
@@ -255,21 +273,21 @@ class Database {
         // WHERE a = ? AND / OR b = ?
         
         $whereQuery = "";
+        $whereQueryArray = array();
         foreach ($queryPropertyCollection as $key => $value) {
-            $whereQuery .= "$key = $$value";
+            // $whereQuery .= "$key = $value";
+            array_push($whereQueryArray, ("$key = $value"));
         }
 
+        $whereQuery = implode(" AND ",$whereQueryArray);
         $query = "WHERE $whereQuery";
         $this->queryBuilderString .= $query;
 
-        return $this->Database;
+        return $this;
     }
 
     function execute() {
-
-        echo 'Query Builder result : ';
-        echo '<br>';
-        echo $this->queryBuilderString;
+        return $this->queryBuilderString;
     }
 
 }

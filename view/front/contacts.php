@@ -27,12 +27,7 @@
     </div>
 </div>
 
-<script>
-//on reload not to resubmit form
-if ( window.history.replaceState ) {
-  window.history.replaceState( null, null, window.location.href );
-}
-</script>
+
 
 
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/DR/view/layout/footer.php"; ?>
