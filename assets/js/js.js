@@ -63,9 +63,7 @@ $(document).ready(function () {
 
     function removeHeight() {
         if ($(window).width() < 750) {
-            var div = document.querySelector('div');
             $('.contacts').removeClass('height-bg');
-            console.log("5555555");
             $('.contacts').attr('style', '');
         }
         else {
@@ -78,6 +76,26 @@ $(document).ready(function () {
     });
 
     removeHeight();
+
+    //modalBox TERMS
+
+    var modalTerms = $('.terms-bg');
+    var btnTerms = $('#terms');
+    var closeTerms = $('#closeTerms');
+
+    btnTerms.click(function(){
+        modalTerms.css('display','flex');
+    });
+
+    closeTerms.click(function(){
+        modalTerms.css('display','none');
+    });
+
+    $(window).click(function(e) {
+        if ($(e.target).is(modalTerms)) {
+          modalTerms.css('display','none');
+        }
+    });
 
 });
 

@@ -7,7 +7,7 @@
     overflow: hidden;
 }
 
-.main-bg img{
+.main-bg img {
     width: 100%;
     object-fit: cover;
     height: inherit;
@@ -33,7 +33,7 @@
     z-index: 1;
 }
 
-.login, .signup{
+.login, .signup {
     border-radius: 20px;
     padding: 30px;
     background-color: #c8cff8;
@@ -45,17 +45,17 @@
     text-align: center;
 }
 
-.login form, .signup form{
+.login form, .signup form {
     border-top: 3px #000 solid;
     padding-top: 15px;
 }
 
-.login label , .form-group label{
+.login label, .form-group label {
     align-self: flex-start;
     margin-left: 10px;
 }
 
-.login input, .login #btn-login, .signup input, .signup #btn-signup-client, .signup #btn-signup-company, .signup-content #upload-logo + label {
+.login input, .login #btn-login, .signup input, .signup #btn-signup-client, .signup #btn-signup-company, .signup-content #upload-logo+label {
     width: 300px;
     border-radius: 5px;
     padding: 10px;
@@ -65,7 +65,7 @@
     box-sizing: border-box;
 }
 
-.login #btn-login, .signup #btn-signup-client, .signup #btn-signup-company, .contact-us #contact-send{
+.login #btn-login, .signup #btn-signup-client, .signup #btn-signup-company, .contact-us #contact-send {
     background-color: #212592;
     color: #fff;
     border: 2px solid #2f31af;
@@ -74,15 +74,16 @@
     margin-top: 15px;
 }
 
-.login #btn-login:hover, .signup #btn-signup-client:hover, .signup #btn-signup-company:hover, .contact-us #contact-send:hover{
+.login #btn-login:hover, .signup #btn-signup-client:hover, .signup #btn-signup-company:hover, .contact-us #contact-send:hover {
     letter-spacing: 1px;
     background-color: #0b0d41;
 }
 
-.login a, .signup a{
+.login a, .signup a {
     text-decoration: none;
 }
-.login a:hover, .signup a:hover{
+
+.login a:hover, .signup a:hover {
     text-decoration: underline;
 }
 
@@ -90,7 +91,7 @@
 
 /* REGISTRATION */
 
-.signup-bg{
+.signup-bg {
     background-image: url('/DR/assets/images/login.jpg');
     width: 100%;
     background-size: cover;
@@ -101,11 +102,11 @@
 }
 
 .signup-toggle {
-   display: flex;
-   margin-bottom: 15px;
+    display: flex;
+    margin-bottom: 15px;
 }
 
-.signup-toggle button{
+.signup-toggle button {
     letter-spacing: 2px;
     border: none;
     padding: 10px;
@@ -116,25 +117,25 @@
     transition: 0.5s;
 }
 
-.signup-toggle button.active{
+.signup-toggle button.active {
     background-color: #43468d;
     color: #fff;
     border-radius: 5px 0 5px 0;
 }
 
-.signup-toggle button:hover{
+.signup-toggle button:hover {
     background-color: rgba(135, 133, 255, 0.644);
 }
 
-.signup-toggle button.active:hover{
+.signup-toggle button.active:hover {
     background-color: #43468d;
 }
 
-.signup-content .content{
+.signup-content .content {
     display: none;
 }
 
-.signup-content .content.active{
+.signup-content .content.active {
     display: block;
 }
 
@@ -142,17 +143,17 @@
     width: auto;
 }
 
-.form-group{
+.form-group {
     display: flex;
     flex-direction: column;
     position: relative;
 }
 
-.signup-content #upload-logo{
+.signup-content #upload-logo {
     display: none;
 }
 
-.signup-content #upload-logo + label{
+.signup-content #upload-logo+label {
     background-color: #4447a0;
     color: #fff;
     border: 2px solid #2f31af;
@@ -161,27 +162,64 @@
     text-align: center;
 }
 
-.signup-content .file-name{
+.signup-content .file-name {
     max-width: 300px;
     margin-left: 10px;
     overflow-wrap: break-word;
 }
 
 
-.signup-content #upload-logo + label i {
+.signup-content #upload-logo+label i {
     margin-right: 10px;
+}
+
+#terms {
+    color: #551a8b;
+    cursor: pointer;
+}
+
+.terms #closeTerms {
+    cursor: pointer;
+    font-size: 20px;
+    float: right;
+    margin: 5px 10px 0 0;
+}
+
+.terms-bg {
+    display: none; 
+    position: fixed; 
+    z-index: 10; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.4); 
+    justify-content: center;
+  }
+
+.terms {
+    background-color: #fff;
+    max-height: 70vh;
+    overflow-y: scroll;
+    width: 50%;
+    box-shadow: 1px 2px 10px 5px rgb(0 0 0 / 50%);
+}
+
+.terms .text {
+    margin: 30px;
 }
 
 /* END REGISTRATION */
 
 /* CONTACTS */
 
-.contacts{
+.contacts {
     width: 100%;
     background-color: #c8cff8;
 }
 
-.contact-us{
+.contact-us {
     position: relative;
     background: #fff;
     width: 30%;
@@ -194,7 +232,7 @@
     padding-top: 3%;
 }
 
-.contact-details{
+.contact-details {
     position: absolute;
     background: rgb(85, 85, 177);
     width: 20%;
@@ -208,7 +246,7 @@
     justify-content: space-evenly;
 }
 
-.contact-us h4, .contact-details h4{
+.contact-us h4, .contact-details h4 {
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: bold;
@@ -216,16 +254,16 @@
     text-shadow: -2px 0 rgb(0 0 0 / 50%);
 }
 
-.contact-us h5{
+.contact-us h5 {
     color: rgba(110, 110, 124, 0.808);
     margin: 0 0 5% 0;
 }
 
-.contact-us form{
+.contact-us form {
     margin-bottom: 5%;
 }
 
-.contact-us input, .contact-us textarea, .contact-us #contact-send{
+.contact-us input, .contact-us textarea, .contact-us #contact-send {
     width: 300px;
     border-radius: 5px;
     padding: 6px;
@@ -236,18 +274,18 @@
     font-size: 15px;
 }
 
-.contact-us textarea{
+.contact-us textarea {
     height: 150px;
     resize: none;
     font-family: 'Manrope', sans-serif;
 }
 
-.contact-details .socials div{ 
+.contact-details .socials div {
     margin: 10px;
     font-size: 20px;
 }
 
-.contact-details .socials i{
+.contact-details .socials i {
     margin-right: 5px;
 }
 
@@ -263,13 +301,13 @@
     margin-bottom: 5px;
 }
 
-.message.error{
+.message.error {
     color: #721c24;
     background-color: #f8d7da;
     border-color: #f5c6cb;
 }
 
-.message.success{
+.message.success {
     color: #08420d;
     background-color: #b0f7b4;
     border-color: #60c05d;

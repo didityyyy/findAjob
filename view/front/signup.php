@@ -2,7 +2,9 @@
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/DR/src/controllers/front/signupController.php'; ?>
 
 <div class="signup-bg flex-x">
+<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/DR/src/messages/terms.php"; ?>
     <div class="signup flex-y">
+
         <div class="signup-toggle">
             <button class="tab-toggle active" data-id="signup-client">Регистрация за Потребители</button>
             <button class="tab-toggle" data-id="signup-company">Регистрация за Фирми</button>
@@ -45,8 +47,8 @@
                     </div>
                     <div class="form-check">
                         <input type="checkbox" name="invalidCheckClient" id="invalidCheckClient">
-                        <label for="invalidCheckClient">
-                            Съгласен съм с Условията за ползване, Политиката за защита на лични данни
+                        <label>
+                            Съгласен съм с <a id="terms">Условията за ползване, Политиката за защита на лични данни</a>
                         </label>
                     </div>
 
@@ -58,8 +60,8 @@
                 <p>Регистрация</p>
                 <form action="" method="post" class="flex-y" enctype="multipart/form-data">
 
-                <?php //include $_SERVER['DOCUMENT_ROOT']. "/DR/src/messages/error.php"; ?>
-                <?php //include $_SERVER['DOCUMENT_ROOT'] . "/DR/src/messages/success.php"; ?>
+                <?php include $_SERVER['DOCUMENT_ROOT']. "/DR/src/messages/error.php"; ?>
+                <?php include $_SERVER['DOCUMENT_ROOT'] . "/DR/src/messages/success.php"; ?>
 
                     <div class="form-group">
                         <label for="firstnameCompany">Име</label>
@@ -113,7 +115,7 @@
                     <div class="form-check">
                         <input type="checkbox" value="" name="invalidCheckCompany" id="invalidCheckCompany">
                         <label for="invalidCheckCompany">
-                            Съгласен съм с Условията за ползване, Политиката за защита на лични данни
+                            Съгласен съм с <a id="terms">Условията за ползване, Политиката за защита на лични данни</a>
                         </label>
                     </div>
 
