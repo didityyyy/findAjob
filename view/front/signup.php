@@ -1,6 +1,8 @@
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/DR/view/layout/header.php"; ?>
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/DR/src/controllers/front/signupController.php'; ?>
 
+<?php if(!isset($_SESSION['username'])) : ?>
+
 <div class="signup-bg flex-x">
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/DR/src/messages/terms.php"; ?>
     <div class="signup flex-y">
@@ -126,6 +128,9 @@
         </div>
     </div>
 </div>
+
+<?php else : header('location: /DR/view/front/home.php'); ?>
+<?php endif; ?>
 
 <script>
     //TOGGLE REGISTRATION

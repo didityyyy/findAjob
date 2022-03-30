@@ -12,7 +12,7 @@
         <ul class="flex-y">
             <li><a href="">Начало</a></li>
             <li><a href="">Често задавани въпроси</a></li>
-            <li><a href="">Контакти</a></li>
+            <li><a href="/DR/view/front/contacts.php">Контакти</a></li>
         </ul>
     <!-- </div> -->
     <p>© <?php echo date("Y"); ?> Copyright: Find a Job</p>

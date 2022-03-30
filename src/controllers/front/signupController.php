@@ -6,6 +6,7 @@ require_once  $_SERVER['DOCUMENT_ROOT'] . '/DR/src/database/emailVerification.ph
 $errors = array();
 $message = NULL;
 
+
 if (isset($_POST['signup-btn-client'])) {
 
     $firstnameClient        = $_POST['firstnameClient'];
@@ -33,7 +34,7 @@ if (isset($_POST['signup-btn-client'])) {
         $errors['emailClient'] = "Моля въведете Имейл";
     }
 
-    if (empty($repeatemailClient)) {
+    if (!empty($emailClient) && empty($repeatemailClient)) {
         $errors['repeatemailClient'] = "Моля повторете имейл";
     }
 
@@ -41,7 +42,7 @@ if (isset($_POST['signup-btn-client'])) {
         $errors['passwordRegisterClient'] = "Моля въведете Парола";
     }
 
-    if (empty($repeatpasswordClient)) {
+    if (!empty($passwordRegisterClient) && empty($repeatpasswordClient)) {
         $errors['repeatpasswordClient'] = "Моля повторете парола";
     }
 
@@ -49,19 +50,19 @@ if (isset($_POST['signup-btn-client'])) {
         $errors['invalidCheckClient'] = "Необходимо е да сте съгласни с условията за ползване, за да се регистрирате.";
     }
 
-    if (!filter_var($emailClient, FILTER_VALIDATE_EMAIL)) {
+    if (!empty($emailClient) && !filter_var($emailClient, FILTER_VALIDATE_EMAIL)) {
         $errors['emailClient'] = "Имейла е невалиден.";
     }
 
-    if ($emailClient !== $repeatemailClient) {
+    if (!empty($emailClient) && $emailClient !== $repeatemailClient) {
         $errors['emailClient'] = "Двата имейла не съвпадат.";
     }
 
-    if ($passwordRegisterClient !== $repeatpasswordClient) {
+    if (!empty($passwordRegisterClient) && $passwordRegisterClient !== $repeatpasswordClient) {
         $errors['passwordRegisterClient'] = "Двете пароли не съвпадат.";
     }
 
-    if (strlen($usernameRegisterClient) < 5) {
+    if (!empty($usernameRegisterClient) && strlen($usernameRegisterClient) < 5) {
         $errors['usernameRegisterClient'] = "Дължината на потребителското име трябва да е повече от 5 символа";
     }
 
@@ -69,16 +70,22 @@ if (isset($_POST['signup-btn-client'])) {
         $errors['usernameRegisterClient'] = "Дължината на паролата трябва да има поне 6 символа";
     }
 
+    //Check email
+    global $emailCompany;
+
     $emailQuery = $DB->selectAll('tb_register_client')->where(array('email' => $DB->str($emailClient)))->execute();
     $user = $DB->query($emailQuery);
+    $emailQuery2 = $DB->selectAll('tb_register_company')->where(array('email' => $DB->str($emailCompany)))->execute();
+    $user1 = $DB->query($emailQuery2);
 
-    if (mysqli_num_rows($user) > 0) {
+    if (mysqli_num_rows($user) > 0 || mysqli_num_rows($user1) > 0) {
         $errors['email'] = "Имейлът вече съществува";
     }
+    //END Check email
 
     $usernameQuery = $DB->selectAll('tm_users')->where(array('username' => $DB->str($usernameRegisterClient)))->execute();
     $user = $DB->query($usernameQuery);
-   
+
     if (mysqli_num_rows($user) > 0) {
         $errors['username'] = "Потребителското име вече съществува";
     }
@@ -106,12 +113,12 @@ if (isset($_POST['signup-btn-client'])) {
                 'email' => $DB->str($emailClient),
                 'token' => $DB->str($token)
             ));
-    
+
             $query2 = $DB->query($insert2);
 
             if ($query2 == 1) {
                 $message = "Регистрирахте се успешно! <br> <b>Моля потвърдете вашата регистрация чрез вашата поща! </b> ";
-                sendVerificationEmail($emailClient,$token);
+                sendVerificationEmail($emailClient, $token);
             }
         }
     }
@@ -155,7 +162,7 @@ if (isset($_POST['signup-btn-company'])) {
         $errors['emailCompany'] = "Моля въведете Имейл";
     }
 
-    if (empty($repeatemailCompany)) {
+    if (!empty($emailCompany) && empty($repeatemailCompany)) {
         $errors['repeatemailCompany'] = "Моля повторете имейл";
     }
 
@@ -163,7 +170,7 @@ if (isset($_POST['signup-btn-company'])) {
         $errors['passwordRegisterCompany'] = "Моля въведете Парола";
     }
 
-    if (empty($repeatpasswordCompany)) {
+    if (!empty($passwordRegisterCompany) && empty($repeatpasswordCompany)) {
         $errors['repeatpasswordCompany'] = "Моля повторете парола";
     }
 
@@ -179,32 +186,38 @@ if (isset($_POST['signup-btn-company'])) {
         $errors['invalidCheckCompany'] = "Необходимо е да сте съгласни с условията за ползване, за да се регистрирате.";
     }
 
-    if (!filter_var($emailCompany, FILTER_VALIDATE_EMAIL)) {
+    if (!empty($emailCompany) && !filter_var($emailCompany, FILTER_VALIDATE_EMAIL)) {
         $errors['emailCompany'] = "Имейла е невалиден.";
     }
 
-    if ($emailCompany !== $repeatemailCompany) {
+    if (!empty($emailCompany) && $emailCompany !== $repeatemailCompany) {
         $errors['emailCompany'] = "Двата имейла не съвпадат.";
     }
 
-    if ($passwordRegisterCompany !== $repeatpasswordCompany) {
+    if (!empty($passwordRegisterCompany) && $passwordRegisterCompany !== $repeatpasswordCompany) {
         $errors['passwordRegisterCompany'] = "Двете пароли не съвпадат.";
     }
 
-    if (!strlen($usernameRegisterCompany) > 5) {
+    if (!empty($usernameRegisterCompany) && !strlen($usernameRegisterCompany) > 5) {
         $errors['usernameRegisterCompany'] = "Дължината на потребителското име трябва да е повече от 5 символа";
     }
 
-    $emailQuery = $DB->selectAll('tb_register_company')->where(array('email' => $DB->str($emailCompany)))->execute();
-    $user = $DB->query($emailQuery);
+    //Check email
+    global $emailClient;
 
-    if (mysqli_num_rows($user) > 0) {
+    $emailQuery = $DB->selectAll('tb_register_client')->where(array('email' => $DB->str($emailClient)))->execute();
+    $user = $DB->query($emailQuery);
+    $emailQuery2 = $DB->selectAll('tb_register_company')->where(array('email' => $DB->str($emailCompany)))->execute();
+    $user1 = $DB->query($emailQuery2);
+
+    if (mysqli_num_rows($user) > 0 || mysqli_num_rows($user1) > 0) {
         $errors['email'] = "Имейлът вече съществува";
     }
+    //END Check email
 
     $usernameQuery = $DB->selectAll('tm_users')->where(array('username' => $DB->str($usernameRegisterCompany)))->execute();
     $user = $DB->query($usernameQuery);
-   
+
     if (mysqli_num_rows($user) > 0) {
         $errors['username'] = "Потребителското име вече съществува";
     }
@@ -249,9 +262,10 @@ if (isset($_POST['signup-btn-company'])) {
 
                 if ($query2 == 1) {
                     $message = "Регистрирахте се успешно! <br> <b>Моля потвърдете вашата регистрация чрез вашата поща! </b> ";
-                    sendVerificationEmail($emailCompany,$token);
+                    sendVerificationEmail($emailCompany, $token);
                 }
             }
         }
     }
 }
+

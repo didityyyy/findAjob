@@ -1,3 +1,7 @@
+:root {
+    --bg-color: rgb(200, 207, 248);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -10,7 +14,7 @@
 }
 
 .nav, .footer{
-    background: rgb(200, 207, 248);
+    background: var(--bg-color);
     background: linear-gradient(180deg, rgba(200, 207, 248, 1) 0%, rgba(88, 91, 250, 1) 100%);
     display: flex;
     align-items: center;
@@ -29,6 +33,7 @@
 
 .nav{
     border-bottom: 3px solid rgb(47, 49, 175);
+    position: relative;
 }
 
 .flex-x{
@@ -71,7 +76,8 @@
 }
 
 .nav ul li a,
-.footer ul li a{
+.footer ul li a,
+.nav-bottom .user{
     text-decoration: none;
     color: #fff;
     transition: all .5s ease-in-out .05s;
@@ -118,12 +124,14 @@
 }
 
 .nav-bottom{
-    background-color: rgb(22, 22, 56);
+    position: absolute;
+    bottom: 0;
+    right: 0;
     color: #fff;
 }
 .nav-bottom .user{
-    text-align: end;
-    padding: 2px 10px 2px 0;
+    padding: 0 10px 4px 0;
+    font-size: 17px; 
 }
 
 .footer {
@@ -185,7 +193,9 @@
 .email-text{
     min-height: 80vh;
     margin: 0 20px;
-    
 }
 
+.inner-container{
+    background-color: var(--bg-color);
+}
 

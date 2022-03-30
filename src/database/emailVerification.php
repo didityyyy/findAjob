@@ -18,3 +18,20 @@ function sendVerificationEmail($userEmail , $token){
     mail($to, $email_subject, $email_body, $headers);
 
 }
+
+function forgottenPass($userEmail, $token){
+    $email_from = 'findajob341@gmail.com';
+    $email_subject = 'Reset Password';
+
+    $email_body = 
+    '<p style="font-size: 20px;">Натиснете посочения линк за да възстановите вашата парола.</p>
+    <a href="http://localhost/DR/view/front/passwordReset/resetPass.php?tokenpass=' . $token . '">
+    Смяна на парола
+    </a>';
+
+    $to = $userEmail; //send to
+
+    $headers = "From $email_from \r\n";
+    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+    mail($to, $email_subject, $email_body, $headers);
+}

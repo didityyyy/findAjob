@@ -189,18 +189,18 @@ class Database {
         return mysqli_query($conn, "SELECT * FROM $tableName");
     }
 
-    // function fetch($tableName) {
+    function fetch($tableName) {
 
-    //     $resultArray    = array();
-    //     $query          = "SELECT * FROM $tableName";
-    //     $fetchResponse  = $this->query($query);
+        $resultArray    = array();
+        $query          = "SELECT * FROM $tableName";
+        $fetchResponse  = $this->query($query);
 
-    //     while($data = mysqli_fetch_assoc($fetchResponse)) {
-    //         array_push($resultArray, $data);
-    //     }
+        while($data = mysqli_fetch_assoc($fetchResponse)) {
+            array_push($resultArray, $data);
+        }
 
-    //     return $resultArray;
-    // }
+        return $resultArray;
+    }
 
     function fetchQuery($query) {
 

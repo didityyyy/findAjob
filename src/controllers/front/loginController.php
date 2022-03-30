@@ -8,7 +8,6 @@ $errors = array();
 
 // logout from system
 if (isset($_GET['logout'])) {
-    echo "Logout Successfully ";
     session_destroy();
     unset($_SESSION['role_id']);
     unset($_SESSION['username']);
@@ -19,14 +18,14 @@ if (isset($_GET['logout'])) {
 // verify user by token
 if (isset($_GET['token'])) {
     $token = $_GET['token'];
-    function verifyUser($token)
+    function verifyUser($token, $tableName)
     {
         global $DB;
 
-        $queryToken = $DB->selectAll('tb_register_client')->where(array('token' => $DB->str($token)))->execute();
+        $queryToken = $DB->selectAll($tableName)->where(array('token' => $DB->str($token)))->execute();
         $result = $DB->query($queryToken);
         if (mysqli_num_rows($result) > 0) {
-            $queryUpdate = $DB->update('tb_register_client', array('verified' => 1))->where(array('token' => $DB->str($token)))->execute();
+            $queryUpdate = $DB->update($tableName, array('verified' => 1))->where(array('token' => $DB->str($token)))->execute();
             if ($DB->query($queryUpdate) == 1) {
                 header('location: /DR/src/messages/verifySuccess.php');
             } else {
@@ -34,25 +33,12 @@ if (isset($_GET['token'])) {
             }
         }
     }
-    function verifyUserCompany($token)
-    {
-        global $DB;
-
-        $queryToken = $DB->selectAll('tb_register_company')->where(array('token' => $DB->str($token)))->execute();
-        $result = $DB->query($queryToken);
-        if (mysqli_num_rows($result) > 0) {
-            $queryUpdate = $DB->update('tb_register_company', array('verified' => 1))->where(array('token' => $DB->str($token)))->execute();
-            if ($DB->query($queryUpdate) == 1) {
-                header('location: /DR/src/messages/verifySuccess.php');
-            } else {
-                echo "Потребителят не е открит.";
-            }
-        }
-    }
-    verifyUser($token);
-    verifyUserCompany($token);
+    verifyUser($token, 'tb_register_client');
+    verifyUser($token, 'tb_register_company');
 }
 
+
+//LOG IN
 if (isset($_POST['btn-login'])) {
 
     $username = $_POST['username-login'];

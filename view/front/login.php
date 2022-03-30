@@ -1,5 +1,7 @@
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/DR/view/layout/header.php"; ?>
 
+<?php if(!isset($_SESSION['username'])) : ?>
+
 <div class="login-bg height-bg flex-x">
     <div class="login flex-y">
         <p>Вход</p>
@@ -16,10 +18,14 @@
                 <input type="password" name="password-login" id="password-login">
             </div>
             <button type="submit" name="btn-login" id="btn-login">Вход</button>
-            <p><a href="">Забравена парола</a></p>
+            <p><a href="/DR/view/front/passwordReset/forgottenPass.php">Забравена парола</a></p>
             <p>Нямате акаунт? <a href="/DR/view/front/signup.php">Регистрация</a></p>
         </form>
     </div>
 </div>
+
+<?php else : header('location: /DR/view/front/home.php'); ?>
+<?php endif; ?>
+
 
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/DR/view/layout/footer.php"; ?>

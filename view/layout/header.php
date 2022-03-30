@@ -104,9 +104,10 @@
                     <div id="open"><i class="fa-solid fa-bars"></i></div>
                     <ul class="menu" id="menu-wrap">
                         <div id="close"><i class="fa-solid fa-xmark"></i></div>
-                        <li><a href="#">Начало</a></li>
-                        <li><a href="#">Профил</a></li>
+                        <li><a href="/DR/view/front/home.php">Начало</a></li>
+                        <li><a href="/DR/view/front/profileUser/myProfileUser.php">Профил</a></li>
                         <li><a href="#">Обяви</a></li>
+                        <li><a href="/DR/view/front/contacts.php">Контакти</a></li>
                         <li><a href="/DR/view/front/home.php?logout=1"><i class="fas fa-sign-out-alt"></i></a></li>
                     </ul>
 
@@ -115,15 +116,15 @@
             <?php endif; ?>
 
 
+            <?php if (isset($_SESSION['username'])) : ?>
+                <div class="nav-bottom">
+                    <div class="user">
+                        <h5> Welcome, <?php echo $_SESSION['username']; ?> </h5>
+                    </div>
+                </div>
+            <?php endif; ?>
 
 
         </div>
-        <?php if (isset($_SESSION['username'])) : ?>
-        <div class="nav-bottom">
-            <div class="user">
-                <h5> Welcome, <?php echo $_SESSION['username']; ?> </h5>
-            </div>
-        </div>
-        <?php endif; ?>
 
         <div class="inner-container flex-x">
