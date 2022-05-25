@@ -30,14 +30,14 @@ if (isset($_GET['tokenpass'])) {
             $queryRenew = "SELECT * FROM tm_users u INNER JOIN tb_register_client cl ON u.username = cl.username 
             WHERE cl.token = '$token'";
             $result = $DB->query($queryRenew);
-            print_r($result);
+            // print_r($result);
             if (mysqli_num_rows($result) > 0) {
                 $queryUpdate = "UPDATE tm_users u INNER JOIN tb_register_client cl ON u.username = cl.username 
                 SET u.password = '$password'
                 WHERE cl.token = '$token'";
-                print_r($queryUpdate);
+                // print_r($queryUpdate);
                 $result = $DB->query($queryUpdate);
-                print_r($result);
+                // print_r($result);
                 if ($DB->query($queryUpdate) == 1) {
                     header('location: /DR/src/messages/renewPassSuccess.php');
                 } else {
@@ -47,7 +47,7 @@ if (isset($_GET['tokenpass'])) {
                 $queryRenew = "SELECT * FROM tm_users u INNER JOIN tb_register_company cp ON u.username = cp.username 
                 WHERE cp.token = '$token'";
                 $result = $DB->query($queryRenew);
-                print_r($result);
+                // print_r($result);
 
                 if (mysqli_num_rows($result) > 0) {
                     $queryUpdate = "UPDATE tm_users u INNER JOIN tb_register_company cp ON u.username = cp.username 

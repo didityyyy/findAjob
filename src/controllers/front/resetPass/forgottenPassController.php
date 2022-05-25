@@ -34,7 +34,9 @@ if (isset($_POST['btn-forgotten-pass'])) {
                     $message = "Изпратен е линк. Моля проверете вашата поща!";
                     forgottenPass($emailForgotten, $token);
                 }
+            }else{
+                $errors['email-forgotten'] = "Имейла е невалиден.";
             }
         }
-    }
+    } 
 }

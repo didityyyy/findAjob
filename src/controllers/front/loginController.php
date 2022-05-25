@@ -3,6 +3,7 @@
 session_start();
 
 require_once  $_SERVER['DOCUMENT_ROOT'] . '/DR/src/database/db.php';
+require_once  $_SERVER['DOCUMENT_ROOT'] . '/DR/src/database/emailVerification.php';
 
 $errors = array();
 

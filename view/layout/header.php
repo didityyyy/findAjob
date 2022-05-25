@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="/DR/assets/css/style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="/DR/assets/css/responsive.css?v=<?php echo time(); ?>">
 
-
+    <script src="/DR/assets/libs/jquery/jquery.js"></script>
+    
     <title>Find a Job</title>
 </head>
 
@@ -51,14 +52,14 @@
                     <ul class="menu" id="menu-wrap">
                         <div id="close"><i class="fa-solid fa-xmark"></i></div>
                         <li class="dropdown-menu">
-                            <a>Опции<i class="fa-solid fa-angle-down"></i></a>
+                            <a href="">Опции<i class="fa-solid fa-angle-down"></i></a>
                             <ul class="dropdown-elements">
                                 <li><a href="">Кандидатури</a></li>
                                 <hr>
-                                <li><a href="">Обяви</a></li>
+                                <li><a href="/DR/view/front/profileHR/jobsHR.php">Обяви</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">Фирми</a></li>
+                        <li><a href="/DR/view/front/profileHR/companiesHR.php">Фирми</a></li>
                         <li><a href="/DR/view/front/home.php?logout=1"><i class="fas fa-sign-out-alt"></i></a></li>
                     </ul>
 
@@ -72,11 +73,11 @@
                         <div id="close"><i class="fa-solid fa-xmark"></i></div>
                         <li><a href="#">Добавяне на категории</a></li>
                         <li class="dropdown-menu">
-                            <a>Служители<i class="fa-solid fa-angle-down"></i></a>
+                            <a href="">Служители<i class="fa-solid fa-angle-down"></i></a>
                             <ul class="dropdown-elements">
-                                <li><a href="">Списък Служители</a></li>
+                                <li><a href="/DR/view/admin/HRs.php">Списък Служители</a></li>
                                 <hr>
-                                <li><a href="">Добавяне на служител</a></li>
+                                <li><a href="/DR/view/admin/addHR.php">Добавяне на служител</a></li>
                             </ul>
                         </li>
                         <li><a href="/DR/view/front/home.php?logout=1"><i class="fas fa-sign-out-alt"></i></a></li>
@@ -91,7 +92,7 @@
                     <ul class="menu" id="menu-wrap">
                         <div id="close"><i class="fa-solid fa-xmark"></i></div>
                         <li><a href="#">Профил</a></li>
-                        <li><a href="#">Добави обява</a></li>
+                        <li><a href="/DR/view/front/profileCompany/addJob.php">Добави обява</a></li>
                         <li><a href="#">Кандидатури</a></li>
                         <li><a href="/DR/view/front/home.php?logout=1"><i class="fas fa-sign-out-alt"></i></a></li>
                     </ul>
@@ -106,7 +107,7 @@
                         <div id="close"><i class="fa-solid fa-xmark"></i></div>
                         <li><a href="/DR/view/front/home.php">Начало</a></li>
                         <li><a href="/DR/view/front/profileUser/myProfileUser.php">Профил</a></li>
-                        <li><a href="#">Обяви</a></li>
+                        <li><a href="/DR/view/front/profileUser/jobs.php">Обяви</a></li>
                         <li><a href="/DR/view/front/contacts.php">Контакти</a></li>
                         <li><a href="/DR/view/front/home.php?logout=1"><i class="fas fa-sign-out-alt"></i></a></li>
                     </ul>

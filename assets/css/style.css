@@ -55,29 +55,36 @@
     margin-left: 10px;
 }
 
-.login input, 
-.login #btn-login, 
-.signup input, 
-.signup #btn-signup-client, 
-.signup #btn-signup-company, 
+.input,
+.login input,
+.login #btn-login,
+.signup input,
+.signup #btn-signup-client,
+.signup #btn-signup-company,
 .signup-content #upload-logo+label,
 #btn-email-forgotten,
-#btn-renew-pass {
+#btn-renew-pass,
+.change-pass input,
+.change-pass #btn-login,
+.delete-profile #btn-delete-profile {
     width: 300px;
     border-radius: 5px;
     padding: 10px;
-    margin: 8px;
+    margin: 8px 0;
     font-size: 18px;
     outline: none;
     box-sizing: border-box;
 }
 
-.login #btn-login, 
-.signup #btn-signup-client, 
-.signup #btn-signup-company, 
-.contact-us #contact-send, 
+.btn,
+.login #btn-login,
+.signup #btn-signup-client,
+.signup #btn-signup-company,
+.contact-us #contact-send,
 #btn-email-forgotten,
-#btn-renew-pass {
+#btn-renew-pass,
+.change-pass #btn-login,
+.delete-profile #btn-delete-profile {
     background-color: #212592;
     color: #fff;
     border: 2px solid #2f31af;
@@ -86,12 +93,15 @@
     margin-top: 15px;
 }
 
-.login #btn-login:hover, 
-.signup #btn-signup-client:hover, 
-.signup #btn-signup-company:hover, 
-.contact-us #contact-send:hover, 
+.btn:hover,
+.login #btn-login:hover,
+.signup #btn-signup-client:hover,
+.signup #btn-signup-company:hover,
+.contact-us #contact-send:hover,
 #btn-email-forgotten:hover,
-#btn-renew-pass:hover {
+#btn-renew-pass:hover,
+.change-pass #btn-login:hover,
+.delete-profile #btn-delete-profile:hover {
     letter-spacing: 1px;
     background-color: #0b0d41;
 }
@@ -102,6 +112,14 @@
 
 .login a:hover, .signup a:hover {
     text-decoration: underline;
+}
+
+.form {
+    width: 50%;
+}
+
+.input {
+    width: 100%;
 }
 
 /* END LOGIN */
@@ -203,17 +221,17 @@
 }
 
 .terms-bg {
-    display: none; 
-    position: fixed; 
-    z-index: 10; 
-    padding-top: 100px; 
+    display: none;
+    position: fixed;
+    z-index: 10;
+    padding-top: 100px;
     left: 0;
     top: 0;
-    width: 100%; 
-    height: 100%; 
-    background-color: rgba(0,0,0,0.4); 
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
     justify-content: center;
-  }
+}
 
 .terms {
     background-color: #fff;
@@ -312,10 +330,11 @@
 
 .message {
     padding: 12px 20px;
-    width: 300px;
+    /* width: 300px; */
     border-radius: 4px;
     word-wrap: break-word;
     margin-bottom: 5px;
+    align-self: center;
 }
 
 .message.error {
@@ -334,3 +353,204 @@
 
 
 /* END FORM ERROR */
+
+/* MY PROFILE USER */
+
+.my-profile {
+    align-self: flex-start;
+    width: 100%;
+    height: 100%;
+}
+
+.nav-profile {
+    border: 2px solid rgb(47, 49, 175);
+    border-radius: 50px;
+    margin: 20px;
+    padding: 10px;
+}
+
+.profile-menu {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.profile-menu .dropdown-elements {
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.profile-menu li {
+    list-style: none;
+}
+
+.profile-menu div {
+    border: 1px solid rgb(47, 49, 175);
+    text-align: center;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.profile-menu li a {
+    text-decoration: none;
+    color: #000;
+}
+
+.profile-menu li a:hover {
+    color: rgb(47, 49, 175);
+}
+
+.profile-menu ul li {
+    padding: 3px 0;
+}
+
+h2 {
+    text-align: center;
+    width: 100%;
+    padding: 5px 0;
+    border-bottom: 1px solid rgb(47, 49, 175);
+    border-top: 1px solid rgb(47, 49, 175);
+    letter-spacing: 1px;
+}
+
+.my-profile h3 {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.my-profile .profile-details,
+.my-profile .change-pass,
+.my-profile .delete-profile {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    max-width: 80%;
+}
+
+table {
+    border-collapse: collapse;
+    min-width: 100%;
+}
+
+td, th {
+    border: 1px solid #000;
+    padding: 10px;
+}
+
+tr:nth-child(even) {
+    background-color: rgb(179, 180, 235);
+    /* color: #fff; */
+}
+
+.delete-profile {
+    flex-direction: column;
+    align-items: center;
+}
+
+.delete-profile form {
+    width: 60%;
+}
+
+.delete-profile #btn-delete-profile,
+.btn-red {
+    margin: 10px 0;
+    color: #f8d7da;
+    background-color: #721c24;
+    border: none;
+    cursor: pointer;
+}
+
+.delete-profile #btn-delete-profile:hover,
+.btn-red:hover {
+    background-color: #390f13;
+}
+
+
+/* END MY PROFILE USER */
+
+/* ADMIN */
+
+.searchbox {
+    position: relative;
+    padding-right: 20px;
+}
+
+.fa-magnifying-glass {
+    position: absolute;
+    top: 23px;
+    right: 7px;
+    cursor: pointer;
+}
+
+/* END ADMIN */
+
+/* HR */
+
+.listing{
+    max-width: 80%;
+    margin: 20px 0;
+}
+
+.listing a {
+    text-decoration: none;
+    padding: 3px 10px;
+    border-radius: 10px;
+    color: #000;
+}
+
+.list-company {
+    width: 80%;
+}
+
+.list-company h4 {
+    text-align: center;
+    font-size: 30px;
+}
+
+.logo-company {
+    max-width: 160px;
+    height: 80px;
+    object-fit: contain;
+    border: 1px solid grey;
+}
+
+.list-company .details {
+    padding: 20px;
+}
+
+.details h6 {
+    font-size: 20px;
+    border-bottom: 1px solid rgb(47, 49, 175);
+}
+
+.details p {
+    margin: 10px 0;
+}
+
+.details span {
+    font-weight: 600;
+}
+
+.details div:last-child {
+    margin-top: 20px;
+}
+
+.list-jobs{
+    border-bottom: 1px solid darkgray;
+    padding: 0 10px;
+}
+
+.list-jobs p:nth-child(2){
+    color: rgb(47, 49, 175);
+}
+
+.text-break{
+    font-family: 'Manrope';
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+
+/* END HR */

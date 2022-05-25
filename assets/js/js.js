@@ -83,20 +83,56 @@ $(document).ready(function () {
     var btnTerms = $('#terms');
     var closeTerms = $('#closeTerms');
 
-    btnTerms.click(function(){
-        modalTerms.css('display','flex');
+    btnTerms.click(function () {
+        modalTerms.css('display', 'flex');
     });
 
-    closeTerms.click(function(){
-        modalTerms.css('display','none');
+    closeTerms.click(function () {
+        modalTerms.css('display', 'none');
     });
 
-    $(window).click(function(e) {
+    $(window).click(function (e) {
         if ($(e.target).is(modalTerms)) {
-          modalTerms.css('display','none');
+            modalTerms.css('display', 'none');
         }
     });
 
+    //Scroll to sections smoothly
+    $(document).on('click', 'a[href^="#"]', function (e) {
+        var id = $(this).attr('href');
+        var $id = $(id);
+        if ($id.length === 0) {
+            return;
+        }
+        e.preventDefault();
+        var pos = $id.offset().top;
+        $('body, html').animate({ scrollTop: pos }, 1000);
+    });
+
+    //delete HR
+    $(".removeHR").click(function () {
+        var id = $(this).parents("tr").attr("id");
+        if (confirm('Акаунтът ще бъде изтрит!')) {
+            $.ajax({
+                url: '/DR/src/controllers/admin/HRsController.php',
+                type: 'GET',
+                data: {
+                    id: id
+                }
+            });
+        }
+    });
+
+    //icon submit form
+    $('#icon-submit').click(function () {
+        $('#searchform').submit();
+    });
+
+    
+
+    $('#searchJob').click(()=>{
+        window.history.replaceState(null,null,'/DR/view/front/profileUser/jobs.php');
+    })
 });
 
 

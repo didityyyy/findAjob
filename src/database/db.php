@@ -1,160 +1,7 @@
 <?php
 
-// class Database {
-
-//     private static $databaseConnection = null;
-//     private static $queryBuilderString = "";
-
-
-    // static function str($param) {
-    //     return "'$param'";
-    // }
-
-    // static function query($sqlQuery) {
-
-    //     $databaseConnection = self::getConnection();
-    //     return mysqli_query($databaseConnection, $sqlQuery);
-    // }
-
-    // // TODO : implement when PHP classes are introduces
-    // static function getLastInsertedId() {
-
-    //     self::$databaseConnection = self::getConnection();
-    //     return mysqli_insert_id(self::$databaseConnection );
-    // } 
-
-    // static function fetch($tableName) {
-
-    //     $resultArray    = array();
-    //     $query          = "SELECT * FROM $tableName";
-    //     $fetchResponse  = self::query($query);
-
-    //     while($data = mysqli_fetch_assoc($fetchResponse)) {
-    //         array_push($resultArray, $data);
-    //     }
-
-    //     return $resultArray;
-    // }
-
-    // static function fetchQuery($query) {
-
-    //     $resultArray    = array();
-    //     $fetchResponse  = self::query($query);
-
-    //     while($data = mysqli_fetch_assoc($fetchResponse)) {
-    //         array_push($resultArray, $data);
-    //     }
-
-    //     return $resultArray;        
-    // }
-
-
-    // static function insert($tableName, $queryPropertyCollection) {
-
-    //     $queryKeies     = "";
-    //     $queryValues    = "";
-
-    //     foreach ($queryPropertyCollection as $key => $value) {
-
-    //         $queryKeies .= ($key . ",");
-    //         $queryValues .= ($value . ",");
-    //     }
-
-    //     $queryKeies     = substr($queryKeies, 0, strlen($queryKeies) - 1);
-    //     $queryValues    = substr($queryValues, 0, strlen($queryValues) - 1);
-
-    //     $query = "INSERT INTO $tableName($queryKeies) VALUES($queryValues)";
-
-    //     self::query($query);
-    // }
-
-    // // UPDATE {table_name} 
-    // // SET column1 = value1, column2 = value2
-    // static function update($tableName, $queryPropertyCollection) {
-
-    //     $updateQueryKeyValue = "";
-    //     foreach ($queryPropertyCollection as $key => $value) {
-    //         $updateQueryKeyValue .= "$key = $value,";
-    //     }
-
-    //     $updateQueryKeyValue = substr($updateQueryKeyValue, 0, strlen($updateQueryKeyValue) - 1);
-    //     $query = "UPDATE $tableName SET $updateQueryKeyValue ";
-    //     // self::query($query);
-    //     self::$queryBuilderString .= " $query";
-    //     return Database;
-    // }
-
-
-    // static function helloWorld() {
-    //     echo "** Hello world from inner function **";
-    // }
-
-
-    // // DELETE {table_name}
-    // // WHERE []
-    // static function delete($tableName) {
-
-    //     $query = "DELETE $tableName";
-    //     self::query($query);
-    // }
-
-    // static function where($queryPropertyCollection) {
-    //     // WHERE a = ? AND / OR b = ?
-        
-    //     $whereQuery = "";
-    //     foreach ($queryPropertyCollection as $key => $value) {
-    //         $whereQuery .= "$key = $$value";
-    //     }
-
-    //     $query = "WHERE $whereQuery";
-    //     self::$queryBuilderString .= $query;
-
-    //     return Database;
-    // }
-
-    // static function execute() {
-
-    //     echo 'Query Builder result : ';
-    //     echo '<br>';
-    //     echo self::$queryBuilderString;
-    // }
-
-
-
-    // // Give me the current database connection
-    // private static function getConnection() {
-
-    //     if(self::$databaseConnection == null) {
-    //        self::$databaseConnection = self::connect(); 
-    //     }
-
-    //     return self::$databaseConnection;
-    // }
-
-    // 1. Create and Connection to Database - MySQL
-    // 2. Prepare query 
-    // 3. Manipulation of screen data
-//     private static function  connect() {
-
-//         define('HOST'       , 'localhost');
-//         define('USERNAME'   , 'root');
-//         define('PASSWORD'   , '');
-//         define('DBNAME'     , 'DR-findAjob');
-//         define('PORT'       , '3306');   
-
-//         $sql = 'CREATE Database IF NOT EXISTS DR_findAjob';
-//         $dbConn=mysqli_connect(HOST,USERNAME,PASSWORD);
-//         if(self::query($dbConn,$sql))
-//         {
-//             echo "Successfully created";
-//         }
-
-//         return mysqli_connect(HOST, USERNAME, PASSWORD, DBNAME, PORT);
-//     }
-
-// }
-
-class Database {
+class Database
+{
 
     private $host = "localhost";
     private $username = "root";
@@ -168,53 +15,58 @@ class Database {
     //     return mysqli_query($connection,$sql);
     // }
 
-    function str($param) {
+    function str($param)
+    {
         return "'$param'";
     }
 
     function connect()
     {
-        return mysqli_connect($this->host,$this->username,$this->password,$this->db);
+        return mysqli_connect($this->host, $this->username, $this->password, $this->db);
     }
 
-    function query($sqlQuery) {
+    function query($sqlQuery)
+    {
 
-        $conn= $this->connect();
+        $conn = $this->connect();
         return mysqli_query($conn, $sqlQuery);
     }
 
-    function querySelectAll($tableName){
+    function querySelectAll($tableName)
+    {
 
-        $conn= $this->connect();
+        $conn = $this->connect();
         return mysqli_query($conn, "SELECT * FROM $tableName");
     }
 
-    function fetch($tableName) {
+    // function fetch($tableName) {
+
+    //     $resultArray    = array();
+    //     $query          = "SELECT * FROM $tableName";
+    //     $fetchResponse  = $this->query($query);
+
+    //     while($data = mysqli_fetch_assoc($fetchResponse)) {
+    //         array_push($resultArray, $data);
+    //     }
+
+    //     return $resultArray;
+    // }
+
+    function fetchQuery($query)
+    {
 
         $resultArray    = array();
-        $query          = "SELECT * FROM $tableName";
         $fetchResponse  = $this->query($query);
 
-        while($data = mysqli_fetch_assoc($fetchResponse)) {
+        while ($data = mysqli_fetch_array($fetchResponse)) {
             array_push($resultArray, $data);
         }
 
         return $resultArray;
     }
 
-    function fetchQuery($query) {
-
-        $resultArray    = array();
-        $fetchResponse  = $this->query($query);
-
-        while($data = mysqli_fetch_assoc($fetchResponse)) {
-            array_push($resultArray, $data);
-        }
-
-        return $resultArray;        
-    }
-
-    function selectAll($tableName) {
+    function selectAll($tableName)
+    {
 
         $this->queryBuilderString = "";
 
@@ -223,7 +75,8 @@ class Database {
         return $this;
     }
 
-    function insert($tableName, $queryPropertyCollection) {
+    function insert($tableName, $queryPropertyCollection)
+    {
 
         $queryKeys     = "";
         $queryValues    = "";
@@ -245,7 +98,8 @@ class Database {
 
     // UPDATE {table_name} 
     // SET column1 = value1, column2 = value2
-    function update($tableName, $queryPropertyCollection) {
+    function update($tableName, $queryPropertyCollection)
+    {
 
         $this->queryBuilderString = "";
 
@@ -263,15 +117,19 @@ class Database {
 
     // DELETE {table_name}
     // WHERE []
-    function delete($tableName) {
+    function delete($tableName)
+    {
 
-        $query = "DELETE $tableName";
-        $this->query($query);
+        $query = "DELETE FROM $tableName ";
+        // $this->query($query);
+        $this->queryBuilderString = " $query";
+        return $this;
     }
 
-    function where($queryPropertyCollection) {
+    function where($queryPropertyCollection)
+    {
         // WHERE a = ? AND / OR b = ?
-        
+
         $whereQuery = "";
         $whereQueryArray = array();
         foreach ($queryPropertyCollection as $key => $value) {
@@ -279,19 +137,66 @@ class Database {
             array_push($whereQueryArray, ("$key = $value"));
         }
 
-        $whereQuery = implode(" AND ",$whereQueryArray);
+        $whereQuery = implode(" AND ", $whereQueryArray);
         $query = "WHERE $whereQuery";
         $this->queryBuilderString .= $query;
 
         return $this;
     }
 
-    function execute() {
+    function orderby($orderby)
+    {
+        $query = "ORDER BY $orderby";
+        $this->queryBuilderString .= $query;
+
+        return $this;
+    }
+
+    function conc($string)
+    {
+        $this->queryBuilderString .= $string;
+
+        return $this;
+    }
+
+    function newQueryStr($query)
+    {
+        $this->queryBuilderString = $query;
+
+        return $this;
+    }
+
+    function execute()
+    {
         return $this->queryBuilderString;
     }
 
+    function countJobs($count_table, $newQuery)
+    {
+        $products_page = 2;
+        $total_products = "SELECT COUNT(*) FROM tb_jobs $count_table ";
+        // echo($total_products);
+        $result = $this->query($total_products);
+        // print_r($result);
+        $resultArr =  mysqli_fetch_array($result);
+        $total_rows = $resultArr[0];
+        global $total_pages;
+        $total_pages = ceil($total_rows / $products_page);
+        global $page;
+        if (isset($_GET['page']) && $total_pages > 1) {
+            $page = $_GET['page'];
+        } else {
+            $page = 1;
+        }
+        $offset = ($page - 1) * $products_page;
+        $limit = "LIMIT $offset, $products_page";
+        $sql = $this->newQueryStr($newQuery)->conc($limit)->execute();
+        // print_r($sql);
+        // print_r($sql);
+        // $res_data = $this->query($sql);
+        return $this->fetchQuery($sql);
+    }
 }
 
 $DB = new Database();
 $db = $DB->connect();
-
