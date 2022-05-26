@@ -17,6 +17,10 @@ a {
     margin: 20px 0;
 }
 
+.mr5{
+    margin-right: 5px;
+}
+
 .py20 {
     padding: 20px 0;
 }
@@ -89,6 +93,10 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+}
+
+.flex {
+    display: flex;
 }
 
 .nav ul, .footer ul {

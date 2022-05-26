@@ -466,6 +466,32 @@ tr:nth-child(even) {
     background-color: #390f13;
 }
 
+.btn-like, .btn-unlike{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-like .fa-heart, .btn-unlike{
+    font-size: 20px;
+}
+
+.btn-unlike .fa-heart{
+    color: rgb(142, 0, 0);
+}
+
+.btn-unlike .fa-heart:hover{
+    transform: rotate(360deg);
+    transition: 1s;
+    color: rgb(0, 0, 0);
+}
+
+.btn-like .fa-heart:hover{
+    transform: rotate(360deg);
+    transition: 1s;
+    color: rgb(142, 0, 0);
+}
+
 
 /* END MY PROFILE USER */
 

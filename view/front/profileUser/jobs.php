@@ -32,22 +32,22 @@
 
         <hr>
 
-<div id="contentJobs">
-        <?php for ($n = 0; $n < count($row); $n += 1) : ?>
-            <div class="flex-between-x list-jobs" id="jobs">
-                <div>
-                    <a href="/DR/view/front/profileHR/detailsJobs.php?id=<?php echo $row[$n]['id']; ?>">
-                        <h3><?php echo $row[$n]['title']; ?></h3>
-                        <p><?php echo $row[$n]['City']; ?>; <?php echo $row[$n]['payment']; ?> лв</p>
-                    </a>
+        <div id="contentJobs">
+            <?php for ($n = 0; $n < count($row); $n += 1) : ?>
+                <div class="flex-between-x list-jobs" id="jobs">
+                    <div>
+                        <a href="/DR/view/front/profileUser/detailsJobs.php?id=<?php echo $row[$n]['id']; ?>">
+                            <h3><?php echo $row[$n]['title']; ?></h3>
+                            <p><?php echo $row[$n]['City']; ?>; <?php echo $row[$n]['payment']; ?> лв</p>
+                        </a>
+                    </div>
+                    <div>
+                        <p><?php echo $row[$n]['companyname']; ?></p>
+                        <img src="/DR/assets/images/logos/<?php echo $row[$n]['logo']; ?>" alt="logo" class="logo-company">
+                    </div>
                 </div>
-                <div>
-                    <p><?php echo $row[$n]['companyname']; ?></p>
-                    <img src="/DR/assets/images/logos/<?php echo $row[$n]['logo']; ?>" alt="logo" class="logo-company">
-                </div>
-            </div>
-        <?php endfor; ?>
-    </div>
+            <?php endfor; ?>
+        </div>
 
         <div><?php include_once $_SERVER['DOCUMENT_ROOT'] . "/DR/src/database/pagination.php"; ?></div>
     </div>
