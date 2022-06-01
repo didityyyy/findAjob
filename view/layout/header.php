@@ -91,7 +91,7 @@
                     <div id="open"><i class="fa-solid fa-bars"></i></div>
                     <ul class="menu" id="menu-wrap">
                         <div id="close"><i class="fa-solid fa-xmark"></i></div>
-                        <li><a href="#">Профил</a></li>
+                        <li><a href="/DR/view/front/profileCompany/myProfileCompany.php">Профил</a></li>
                         <li><a href="/DR/view/front/profileCompany/addJob.php">Добави обява</a></li>
                         <li><a href="#">Кандидатури</a></li>
                         <li><a href="/DR/view/front/home.php?logout=1"><i class="fas fa-sign-out-alt"></i></a></li>

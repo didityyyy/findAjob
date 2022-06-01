@@ -118,7 +118,7 @@ if (isset($_POST['signup-btn-client'])) {
 
             if ($query2 == 1) {
                 $message = "Регистрирахте се успешно! <br> <b>Моля потвърдете вашата регистрация чрез вашата поща! </b> ";
-                sendVerificationEmail($emailClient, $token);
+                // sendVerificationEmail($emailClient, $token);
             }
         }
     }

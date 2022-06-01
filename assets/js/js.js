@@ -77,17 +77,27 @@ $(document).ready(function () {
 
     removeHeight();
 
-    //modalBox TERMS
+    //modalBox TERMS and confirmation
 
     var modalTerms = $('.terms-bg');
     var btnTerms = $('#terms');
+    var btnDeleteProfile = $('#btn-delete-profile');
+    var btnCancel = $('#btn-cancel');
     var closeTerms = $('#closeTerms');
 
     btnTerms.click(function () {
         modalTerms.css('display', 'flex');
     });
 
+    btnDeleteProfile.click(function () {
+        modalTerms.css('display', 'flex');
+    });
+
     closeTerms.click(function () {
+        modalTerms.css('display', 'none');
+    });
+
+    btnCancel.click(function () {
         modalTerms.css('display', 'none');
     });
 
@@ -128,11 +138,26 @@ $(document).ready(function () {
         $('#searchform').submit();
     });
 
-    
 
-    $('#searchJob').click(()=>{
-        window.history.replaceState(null,null,'/DR/view/front/profileUser/jobs.php');
+
+    $('#searchJob').click(() => {
+        window.history.replaceState(null, null, '/DR/view/front/profileUser/jobs.php');
     })
+
+    //delete profile confirmation
+    var btnDelete = $('#btn-delete');
+    btnDelete.click(() => {
+        //e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: '/DR/src/controllers/front/profileUser/deleteProfileController.php',
+            data: { deleteProfile : this.value} ,
+            success: function () {
+                alert('sss');
+               
+            }
+        });
+    });
 });
 
 

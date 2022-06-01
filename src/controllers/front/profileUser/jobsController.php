@@ -84,46 +84,62 @@ if (isset($_POST['searchJob'])) {
 }
 
 // Button to Candidate (check if verified)
-$username = $_SESSION['username'];
-$queryS = $DB->selectAll('tb_register_client')->where(array('username' => $DB->str($username)))->execute();
-$rowS = $DB->fetchQuery($queryS);
+
+
 
 
 if (isset($_POST['candidate'])) {
-    if ($rowS[0]['verified'] == 1) {
-        $id = $_GET['id'];
-        header('location: /DR/view/front/profileUser/candidateForm.php?id='.$id);
+    if (isset($_SESSION['username'])) {
+        $username = $_SESSION['username'];
+        $queryS = $DB->selectAll('tb_register_client')->where(array('username' => $DB->str($username)))->execute();
+        $rowS = $DB->fetchQuery($queryS);
+        if ($rowS[0]['verified'] == 1) {
+            $id = $_GET['id'];
+            header('location: /DR/view/front/profileUser/candidateForm.php?id=' . $id);
+        } else {
+            $email = $rowS[0]['email'];
+            $token = $rowS[0]['token'];
+            sendVerificationEmail($email, $token);
+            header('location: /DR/src/messages/verifyUser.php');
+        }
     } else {
-        $email = $rowS[0]['email'];
-        $token = $rowS[0]['token'];
-        sendVerificationEmail($email, $token);
-        header('location: /DR/src/messages/verifyUser.php');
+        header('location: /DR/view/front/login.php');
     }
 }
+
 
 //display job details
-if(isset($_GET['id'])){
+if (isset($_GET['id'])) {
+
     $id = $_GET['id'];
-    $querydetails = $DB->newQueryStr($query)->where(array('j.id' => $id))->execute();; 
+    $querydetails = $DB->newQueryStr($query)->where(array('j.id' => $id))->execute();;
     $rowdetails = $DB->fetchQuery($querydetails);
-
-    //like job
-    if(isset($_POST['like-job-btn'])){
     
-        $insert = $DB->insert('tb_liked_jobs', array(
-            'profileid' => $rowS[0]['id'],
-            'jobid'     => $id,
-        ));
+    if (isset($_SESSION['username'])) {
+        $username = $_SESSION['username'];
+        $queryS = $DB->selectAll('tb_register_client')->where(array('username' => $DB->str($username)))->execute();
+        $rowS = $DB->fetchQuery($queryS);
 
-        $query = $DB->query($insert);
+        //like job
+
+        if (isset($_POST['like-job-btn'])) {
+
+            $insert = $DB->insert('tb_liked_jobs', array(
+                'profileid' => $rowS[0]['id'],
+                'jobid'     => $id,
+            ));
+
+            $query = $DB->query($insert);
+        }
+
+        if (isset($_POST['unlike-job-btn'])) {
+            $deleteLike = $DB->delete('tb_liked_jobs')->where(array('profileid' => $rowS[0]['id'], 'jobid' => $id))->execute();
+            $resultLike = $DB->query($deleteLike);
+        }
+
+        $id = $_GET['id'];
+
+        $queryLiked = $DB->selectAll('tb_liked_jobs')->where(array('profileid' => $rowS[0]['id'], 'jobid' => $id))->execute();
+        $result = $DB->query($queryLiked);
     }
-
-    if(isset($_POST['unlike-job-btn'])){
-        $deleteLike = $DB->delete('tb_liked_jobs')->where(array('profileid'=>$rowS[0]['id'],'jobid'=> $id))->execute();
-        $resultLike = $DB->query($deleteLike);
-    }
-
-    $queryLiked = $DB->selectAll('tb_liked_jobs')->where(array('profileid'=>$rowS[0]['id'],'jobid'=> $id))->execute();
-    $result = $DB->query($queryLiked);
 }
-

@@ -1,7 +1,7 @@
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/DR/view/layout/header.php"; ?>
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/DR/src/controllers/front/profileUser/myProfileUserController.php"; ?>
+<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/DR/src/controllers/front/profileCompany/myProfileCompanyController.php"; ?>
 
-<?php if (isset($_SESSION['username']) && $_SESSION['role'] == 4) : ?>
+<?php if (isset($_SESSION['username']) && $_SESSION['role'] == 3) : ?>
 
     <div class="my-profile">
         <div class="nav-profile">
@@ -17,9 +17,7 @@
                 <li>
                     <div>Дейности<i class="fa-solid fa-angle-down"></i></div>
                     <ul>
-                        <li><a href="#candidates">Кандидаствания</a></li>
-                        <li><a href="#liked">Харесани обяви</a></li>
-                        <!-- <li><a href=""></a></li> -->
+                        <li><a href="#added-jobs">Добавени обяви</a></li>
                     </ul>
                 </li>
             </ul>
@@ -46,6 +44,18 @@
                     <tr>
                         <td>Имейл: </td>
                         <td><?php echo $row[0]['email']; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Фирма: </td>
+                        <td><?php echo $row[0]['companyname']; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Булстат: </td>
+                        <td><?php echo $row[0]['companyid']; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Лого: </td>
+                        <td><img src="/DR/assets/images/logos/<?php echo $row[0]['logo']; ?>" alt="logo" class="logo-company"></td>
                     </tr>
                 </table>
             </div>
@@ -104,49 +114,35 @@
 
         <h2>Дейности</h2>
 
-        <div id="candidates">
-            <h3>Кандидатствания</h3>
-            <div class="candidate-details">
-                <?php if (mysqli_num_rows($candidates) || mysqli_num_rows($candidates2) > 0) : ?>
-                    <table>
-                        <tr>
-                            <th>Обява</th>
-                            <th>Кандидатура</th>
-                            <th>Статус</th>
-                        </tr>
-                        <?php for ($n = 0; $n < count($rowCandidates); $n += 1) : ?>
-                            <tr>
-                                <td><?php echo $rowCandidates[$n][24]; ?></td>
-                                <td><a href="/DR/view/front/profileUser/candidateDetails.php?id=<?php echo $rowCandidates[$n]['id_c']; ?>" class="bold-text"><?php echo $rowCandidates[$n][1] . " " . $rowCandidates[$n][2] . " " . $rowCandidates[$n]['id_c']; ?></a></td>
-                                <td><?php echo $rowCandidates[$n][33] ?></td>
-                            </tr>
-                        <?php endfor; ?>
-                        <?php for ($n = 0; $n < count($rowCandidates2); $n += 1) : ?>
-                            <tr>
-                                <td><?php echo $rowCandidates2[$n]['title']; ?></td>
-                                <td><a href="/DR/view/front/profileUser/candidateDetails.php?id=<?php echo $rowCandidates2[$n]['id_c']; ?>" class="bold-text"><?php echo $rowCandidates2[$n][6] . " " . $rowCandidates[$n][2] . " " . $rowCandidates[$n]['id_c']; ?></a></td>
-                                <td><?php echo $rowCandidates2[$n][29] ?></td>
-                            </tr>
-                        <?php endfor; ?>
-                    </table>
-                <?php else : ?>
-                    <p class="no-data">Няма налични данни</p>
-                <?php endif; ?>
-            </div>
-        </div>
-
-        <div id="liked">
-            <h3>Харесани обяви</h3>
+        <div id="added-jobs">
+            <h3>Добавени обяви</h3>
             <div class="liked-details">
-                <?php if (mysqli_num_rows($liked) > 0) : ?>
+                <?php if (mysqli_num_rows($resultsAddedJobs) > 0) : ?>
                     <table>
                         <tr>
                             <th>Обява</th>
+                            <th>Одобрена</th>
+                            <th>Валидна до:</th>
+                            <th>Общо кандидатури</th>
                         </tr>
-                        <?php for ($n = 0; $n < count($rowLiked); $n += 1) : ?>
+                        <?php for ($n = 0; $n < count($rowAddedJobs); $n += 1) : ?>
                             <tr>
-                                <td><a href="/DR/view/front/profileUser/detailsJobs.php?id=<?php echo $rowLiked[$n]['id']; ?>" class="bold-text"><?php echo $rowLiked[$n]['title']; ?></a></td>
+                                <td><a href="/DR/view/front/profileUser/detailsJobs.php?id=<?php echo $rowLiked[$n]['id']; ?>" class="bold-text"><?php echo $rowAddedJobs[$n]['title']; ?></a></td>
+                                <td><?php if($rowAddedJobs[$n]['approved'] == 0){ echo "В изчакване";}
+                                else{ echo "ДА"; }?></td>
+                                <td><abbr title="<?php echo $rowAddedJobs[$n]['expire_date']; ?>"> <?php
+                                $datenow = date("Y-m-d");
+                                $expiredate = $rowAddedJobs[$n]['expire_date'];
+                                $difference = abs(strtotime($expiredate) - strtotime($datenow));
+                                $years  = floor($difference / (365 * 60 * 60 * 24));
+                                $months = floor(($difference - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
+                                $days   = floor(($difference - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 *24) / (60 * 60 * 24));
+                                echo $days . ' дни'; ?></abbr></td>
+                                <td><?php echo $rowAddedJobs[$n]['title']; ?></td>
                             </tr>
+
+
+
                         <?php endfor; ?>
                     </table>
                 <?php else : ?>
