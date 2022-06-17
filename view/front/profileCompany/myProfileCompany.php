@@ -146,8 +146,13 @@
                                             echo  $months . ' месеца и ' . $days . ' дни';
                                         } else {
                                             echo $days . ' дни';
-                                            if($days <= 2){
-                                                daysLeftJob($row[0]['email'],$rowAddedJobs[$n]['title']);
+                                            if ($days <= 2) {
+                                                if ($rowAddedJobs[$n]['sentExpireEmail'] == 0) {
+                                                    daysLeftJob($row[0]['email'], $rowAddedJobs[$n]['title']);
+                                                    $updateJobExpire = $DB->update('tb_jobs', ['sentExpireEmail' => 1])->where(array('title' => $DB->str($rowAddedJobs[$n]['title'])))->execute();
+                                                    print_r($updateJobExpire);
+                                                    $DB->query($updateJobExpire);
+                                                }
                                             }
                                         } ?>
                                     </abbr></td>

@@ -47,7 +47,7 @@ if (isset($_POST['btn-change-pass-user'])) {
 }
 
 //added jobs
-$queryAdd = 'SELECT j.title,j.payment,cat.title as Category,city.title as City,regc.companyname,regc.companyid,regc.logo,j.description, j.city, j.category, j.id, j.approved, j.expire_date,COUNT(usc.jobid) + COUNT(can.jobid) as count from tb_jobs j
+$queryAdd = 'SELECT j.title,j.payment,j.sentExpireEmail,cat.title as Category,city.title as City,regc.companyname,regc.companyid,regc.logo,j.description, j.city, j.category, j.id, j.approved, j.expire_date,COUNT(usc.jobid) + COUNT(can.jobid) as count from tb_jobs j
 join tb_category_profession cat on cat.id = j.category
 join tb_city city on city.id = j.city
 join tb_register_company regc on regc.companyid = j.company 

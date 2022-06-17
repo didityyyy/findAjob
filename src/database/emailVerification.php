@@ -48,4 +48,5 @@ function daysLeftJob($userEmail,$job){
     $headers = "From $email_from \r\n";
     $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
     mail($to, $email_subject, $email_body, $headers);
+    
 }
