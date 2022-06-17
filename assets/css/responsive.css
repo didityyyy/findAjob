@@ -1,4 +1,4 @@
-@media screen and (min-height: 1000px){
+@media screen and (min-height: 1000px) {
     .contact-details {
         height: 30%;
     }
@@ -20,15 +20,15 @@
 
 @media screen and (max-width: 1100px) {
 
-    .contact-us{
+    .contact-us {
         width: 40%;
     }
 
-    .contact-us input, .contact-us textarea , .contact-us #contact-send {
+    .contact-us input, .contact-us textarea, .contact-us #contact-send {
         width: 250px;
     }
 
-    .contact-details{
+    .contact-details {
         margin-left: -55%;
     }
 
@@ -90,39 +90,64 @@
         font-size: 40px;
         transform: rotate(360deg);
         transition: all 0.5s ease-in-out;
+        text-align: center;
+    }
+
+    .dropdown-elements {
+        display: flex;
+        position: relative;
+        align-items: flex-start;
+        flex-direction: column;
+        background: none;
+        border-radius: none;
+        z-index: none;
+        box-shadow: none;
+        padding: 5px;
     }
 
     /* END MENU */
 
     /* CONTACT */
 
-    .contacts{
+    .contacts {
         display: flex;
         justify-content: space-around;
-        flex-direction: column; 
+        flex-direction: column;
     }
 
-    .contact-us{
-      width: 80%;
-      padding: 15px;
-      margin: 5% 0 10% 0;
-      height: 100%;
-      min-height: 60%;
+    .contact-us {
+        width: 80%;
+        padding: 15px;
+        margin: 5% 0 10% 0;
+        height: 100%;
+        min-height: 60%;
     }
 
-    .contact-details{
+    .contact-details {
         position: relative;
         margin: 0 0 5% 0;
         width: 80%;
         padding: 15px;
     }
 
-    .contact-us form{
+    .contact-us form {
         margin-bottom: 0;
     }
+
     /* END CONTACT */
 
 
+    .flex-wrap {
+        flex-wrap: wrap;
+    }
+
+    .form {
+        width: 80%;
+    }
+
+    .table {
+        overflow-wrap: anywhere;
+    }
 
     .footer {
         flex-direction: column;
@@ -141,15 +166,27 @@
     .footer ul:first-child {
         align-items: center;
     }
+
+    .candidates{
+        margin: 30px auto;
+    }
+
+    .list-candidates{
+        margin-left: 0;
+    }
+
+    .input{
+        margin: 10px 0;
+    }
 }
 
 @media screen and (max-width: 300px) {
 
-    .contact-us input, .contact-us textarea , .contact-us #contact-send {
+    .contact-us input, .contact-us textarea, .contact-us #contact-send {
         width: 200px;
     }
 
-    .contact-us h4, .contact-us h5{
+    .contact-us h4, .contact-us h5 {
         text-align: center;
     }
 

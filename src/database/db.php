@@ -173,15 +173,16 @@ class Database
 
     function countJobs($count_table, $newQuery)
     {
-        $products_page = 2;
+        $products_page = 3;
         $total_products = "SELECT COUNT(*) FROM tb_jobs $count_table ";
         // echo($total_products);
         $result = $this->query($total_products);
-        // print_r($result);
+        //  print_r($result);
         $resultArr =  mysqli_fetch_array($result);
         $total_rows = $resultArr[0];
         global $total_pages;
         $total_pages = ceil($total_rows / $products_page);
+        // print_r($total_pages);
         global $page;
         if (isset($_GET['page']) && $total_pages > 1) {
             $page = $_GET['page'];

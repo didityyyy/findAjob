@@ -11,8 +11,8 @@
         </ul>
         <?php if ((!isset($_SESSION['role'])) || $_SESSION['role'] == 3 || $_SESSION['role'] == 4) : ?>
         <ul class="flex-y">
-            <li><a href="">Начало</a></li>
-            <li><a href="">Често задавани въпроси</a></li>
+            <li><a href="/DR/view/front/home.php">Начало</a></li>
+            <li><a href="/DR/view/front/FAQs.php">Често задавани въпроси</a></li>
             <li><a href="/DR/view/front/contacts.php">Контакти</a></li>
         </ul>
         <?php endif; ?>

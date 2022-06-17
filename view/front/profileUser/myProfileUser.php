@@ -27,10 +27,6 @@
 
         <h2>Моят профил</h2>
 
-        <div class="my20 flex-x">
-            <?php include $_SERVER['DOCUMENT_ROOT'] . "/DR/src/messages/error.php"; ?>
-            <?php include $_SERVER['DOCUMENT_ROOT'] . "/DR/src/messages/success.php"; ?>
-        </div>
         <div id="view-profile">
             <h3>Преглед на профила</h3>
             <div class="profile-details">
@@ -55,6 +51,11 @@
             <h3>Смяна на парола</h3>
             <div class="change-pass">
                 <form method="POST">
+
+                    <div class="flex-x">
+                        <?php include $_SERVER['DOCUMENT_ROOT'] . "/DR/src/messages/error.php"; ?>
+                        <?php include $_SERVER['DOCUMENT_ROOT'] . "/DR/src/messages/success.php"; ?>
+                    </div>
 
                     <div class="form-group">
                         <label for="oldPass">Стара Парола</label>
@@ -86,9 +87,9 @@
                         <div class="text">
                             <h2 style="text-align: center; margin-top:15px;">Потвърждение</h2>
                             <form method="POST">
-                                <?php include $_SERVER['DOCUMENT_ROOT'] . "/DR/src/messages/error.php"; ?>
+                                <div class="message error" style="display: none;" id="error-message"></div>
                                 <div class="form-group">
-                                    <input type="password" name="passwordDelete" placeholder="Парола...">
+                                    <input type="password" name="passwordDelete" id="pass-check" placeholder="Парола...">
                                 </div>
                                 <p style="text-align: center;" class="my20">Акаунтът ви ще бъде изтрит!</p>
                                 <div class="flex-between-x"> <button type="button" id="btn-cancel" class="btn-small">Откажи</button>
@@ -124,7 +125,7 @@
                         <?php for ($n = 0; $n < count($rowCandidates2); $n += 1) : ?>
                             <tr>
                                 <td><?php echo $rowCandidates2[$n]['title']; ?></td>
-                                <td><a href="/DR/view/front/profileUser/candidateDetails.php?id=<?php echo $rowCandidates2[$n]['id_c']; ?>" class="bold-text"><?php echo $rowCandidates2[$n][6] . " " . $rowCandidates[$n][2] . " " . $rowCandidates[$n]['id_c']; ?></a></td>
+                                <td><a href="/DR/view/front/profileUser/candidateDetails.php?id=<?php echo $rowCandidates2[$n]['id_c']; ?>" class="bold-text"><?php echo $rowCandidates2[$n][6] . " " . $rowCandidates2[$n][7] . " " . $rowCandidates2[$n]['id_c']; ?></a></td>
                                 <td><?php echo $rowCandidates2[$n][29] ?></td>
                             </tr>
                         <?php endfor; ?>

@@ -3,7 +3,7 @@
 
 <?php if (isset($_SESSION['username']) && $_SESSION['role'] == 1) : ?>
 
-    <div class="listing tabs">
+    <div class="listing tabs w-80">
         <h2 class="mb10">Обяви</h2>
         <div class="signup-toggle">
             <button class="tab-toggle active" data-id="disapproved-jobs">Неодобрени обяви</button>
@@ -29,21 +29,29 @@
                 <?php endfor; ?>
             </div>
             <div id="approved-jobs" class="content">
-                <?php for ($n = 0; $n < count($rowApproved); $n += 1) : ?>
-                    <div class="flex-between-x list-jobs">
-                        <div>
-                            <a href="/DR/view/front/profileHR/detailsJobsHR.php?id=<?php echo $rowApproved[$n]['id']; ?>">
-                                <h3><?php echo $rowApproved[$n]['title']; ?></h3>
-                                <p><?php echo $rowApproved[$n]['City']; ?>; <?php echo $rowApproved[$n]['payment']; ?> лв</p>
-                            </a>
+                <div class="form-group">
+                    <input type="text" class="input searchbox" id="searchapprovedjob" placeholder="Потърси фирма">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+
+                <div id="approved-jobs2"></div>
+                <div id="approved-jobs1">
+                    <?php for ($n = 0; $n < count($rowApproved); $n += 1) : ?>
+                        <div class="flex-between-x list-jobs">
+                            <div>
+                                <a href="/DR/view/front/profileHR/detailsJobsHR.php?id=<?php echo $rowApproved[$n]['id']; ?>">
+                                    <h3><?php echo $rowApproved[$n]['title']; ?></h3>
+                                    <p><?php echo $rowApproved[$n]['City']; ?>; <?php echo $rowApproved[$n]['payment']; ?> лв</p>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="/DR/view/front/profileHR/detailsCompaniesHR.php?id=<?php echo $rowApproved[$n]['companyid']; ?>">
+                                    <p><?php echo $rowApproved[$n]['companyname']; ?></p>
+                                </a>
+                            </div>
                         </div>
-                        <div>
-                            <a href="/DR/view/front/profileHR/detailsCompaniesHR.php?id=<?php echo $rowApproved[$n]['companyid']; ?>">
-                                <p><?php echo $rowApproved[$n]['companyname']; ?></p>
-                            </a>
-                        </div>
-                    </div>
-                <?php endfor; ?>
+                    <?php endfor; ?>
+                </div>
             </div>
         </div>
     </div>

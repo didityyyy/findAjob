@@ -18,9 +18,29 @@
     <link rel="stylesheet" href="/DR/assets/css/responsive.css?v=<?php echo time(); ?>">
 
     <script src="/DR/assets/libs/jquery/jquery.js"></script>
-    
+
     <title>Find a Job</title>
 </head>
+
+<!--Start of Tawk.to Script-->
+<?php if (isset($_SESSION['role'])) : ?>
+    <?php if ($_SESSION['role'] == 3) : ?>
+        <script type="text/javascript">
+            var Tawk_API = Tawk_API || {},
+                Tawk_LoadStart = new Date();
+            (function() {
+                var s1 = document.createElement("script"),
+                    s0 = document.getElementsByTagName("script")[0];
+                s1.async = true;
+                s1.src = 'https://embed.tawk.to/62a463127b967b117993fa81/1g59260p2';
+                s1.charset = 'UTF-8';
+                s1.setAttribute('crossorigin', '*');
+                s0.parentNode.insertBefore(s1, s0);
+            })();
+        </script>
+    <?php endif; ?>
+<?php endif; ?>
+<!--End of Tawk.to Script-->
 
 <body>
     <div class="container">
@@ -52,9 +72,9 @@
                     <ul class="menu" id="menu-wrap">
                         <div id="close"><i class="fa-solid fa-xmark"></i></div>
                         <li class="dropdown-menu">
-                            <a href="">Опции<i class="fa-solid fa-angle-down"></i></a>
-                            <ul class="dropdown-elements">
-                                <li><a href="">Кандидатури</a></li>
+                            <a onclick="return false">Опции<i class="fa-solid fa-angle-down"></i></a>
+                            <ul class="dropdown-elements" id="removeClass">
+                                <li><a href="/DR/view/front/profileHR/candidatesHR.php">Кандидатури</a></li>
                                 <hr>
                                 <li><a href="/DR/view/front/profileHR/jobsHR.php">Обяви</a></li>
                             </ul>
@@ -71,15 +91,15 @@
                     <div id="open"><i class="fa-solid fa-bars"></i></div>
                     <ul class="menu" id="menu-wrap">
                         <div id="close"><i class="fa-solid fa-xmark"></i></div>
-                        <li><a href="#">Добавяне на категории</a></li>
-                        <li class="dropdown-menu">
+                        <!-- <li><a href="#">Добавяне на категории</a></li> -->
+                        <!-- <li class="dropdown-menu">
                             <a href="">Служители<i class="fa-solid fa-angle-down"></i></a>
-                            <ul class="dropdown-elements">
+                            <ul class="dropdown-elements" id="removeClass"> -->
                                 <li><a href="/DR/view/admin/HRs.php">Списък Служители</a></li>
                                 <hr>
                                 <li><a href="/DR/view/admin/addHR.php">Добавяне на служител</a></li>
-                            </ul>
-                        </li>
+                            <!-- </ul>
+                        </li> -->
                         <li><a href="/DR/view/front/home.php?logout=1"><i class="fas fa-sign-out-alt"></i></a></li>
                     </ul>
 
@@ -93,7 +113,7 @@
                         <div id="close"><i class="fa-solid fa-xmark"></i></div>
                         <li><a href="/DR/view/front/profileCompany/myProfileCompany.php">Профил</a></li>
                         <li><a href="/DR/view/front/profileCompany/addJob.php">Добави обява</a></li>
-                        <li><a href="#">Кандидатури</a></li>
+                        <li><a href="/DR/view/front/profileCompany/viewCandidates.php">Кандидатури</a></li>
                         <li><a href="/DR/view/front/home.php?logout=1"><i class="fas fa-sign-out-alt"></i></a></li>
                     </ul>
 
@@ -128,4 +148,4 @@
 
         </div>
 
-        <div class="inner-container flex-x">
+        <div class="inner-container flex-start-x">

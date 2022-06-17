@@ -25,10 +25,6 @@
 
         <h2>Моят профил</h2>
 
-        <div class="my20 flex-x">
-            <?php include $_SERVER['DOCUMENT_ROOT'] . "/DR/src/messages/error.php"; ?>
-            <?php include $_SERVER['DOCUMENT_ROOT'] . "/DR/src/messages/success.php"; ?>
-        </div>
         <div id="view-profile">
             <h3>Преглед на профила</h3>
             <div class="profile-details">
@@ -66,6 +62,11 @@
             <div class="change-pass">
                 <form method="POST">
 
+                    <div class="flex-x">
+                        <?php include $_SERVER['DOCUMENT_ROOT'] . "/DR/src/messages/error.php"; ?>
+                        <?php include $_SERVER['DOCUMENT_ROOT'] . "/DR/src/messages/success.php"; ?>
+                    </div>
+
                     <div class="form-group">
                         <label for="oldPass">Стара Парола</label>
                         <input type="password" name="oldPass">
@@ -96,13 +97,13 @@
                         <div class="text">
                             <h2 style="text-align: center; margin-top:15px;">Потвърждение</h2>
                             <form method="POST">
-                                <?php include $_SERVER['DOCUMENT_ROOT'] . "/DR/src/messages/error.php"; ?>
+                                <div class="message error" style="display: none;" id="error-message"></div>
                                 <div class="form-group">
-                                    <input type="password" name="passwordDelete" placeholder="Парола...">
+                                    <input type="password" name="passwordDelete" id="pass-check" placeholder="Парола...">
                                 </div>
                                 <p style="text-align: center;" class="my20">Акаунтът ви ще бъде изтрит!</p>
                                 <div class="flex-between-x"> <button type="button" id="btn-cancel" class="btn-small">Откажи</button>
-                                    <button type="button" id="btn-delete" name="btn-delete-profile" class="btn-small">Изтрий</button>
+                                    <button type="button" id="btn-delete2" name="btn-delete-profile" class="btn-small">Изтрий</button>
                                 </div>
                             </form>
 
@@ -126,19 +127,31 @@
                             <th>Общо кандидатури</th>
                         </tr>
                         <?php for ($n = 0; $n < count($rowAddedJobs); $n += 1) : ?>
-                            <tr>
-                                <td><a href="/DR/view/front/profileUser/detailsJobs.php?id=<?php echo $rowLiked[$n]['id']; ?>" class="bold-text"><?php echo $rowAddedJobs[$n]['title']; ?></a></td>
-                                <td><?php if($rowAddedJobs[$n]['approved'] == 0){ echo "В изчакване";}
-                                else{ echo "ДА"; }?></td>
-                                <td><abbr title="<?php echo $rowAddedJobs[$n]['expire_date']; ?>"> <?php
-                                $datenow = date("Y-m-d");
-                                $expiredate = $rowAddedJobs[$n]['expire_date'];
-                                $difference = abs(strtotime($expiredate) - strtotime($datenow));
-                                $years  = floor($difference / (365 * 60 * 60 * 24));
-                                $months = floor(($difference - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
-                                $days   = floor(($difference - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 *24) / (60 * 60 * 24));
-                                echo $days . ' дни'; ?></abbr></td>
-                                <td><?php echo $rowAddedJobs[$n]['title']; ?></td>
+                            <tr class="companyTableInfo">
+                                <td><a href="/DR/view/front/profileCompany/detailsJobsCompany.php?id=<?php echo $rowAddedJobs[$n]['id']; ?>" class="bold-text"><?php echo $rowAddedJobs[$n]['title']; ?></a></td>
+                                <td><?php if ($rowAddedJobs[$n]['approved'] == 0) {
+                                        echo "В изчакване";
+                                    } else {
+                                        echo "ДА";
+                                    } ?></td>
+                                <td id="daysleft"><abbr title="<?php echo $rowAddedJobs[$n]['expire_date']; ?>">
+                                        <?php
+                                        $datenow = date("Y-m-d");
+                                        $expiredate = $rowAddedJobs[$n]['expire_date'];
+                                        $difference = abs(strtotime($expiredate) - strtotime($datenow));
+                                        $years  = floor($difference / (365 * 60 * 60 * 24));
+                                        $months = floor(($difference - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
+                                        $days   = floor(($difference - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
+                                        if ($months > 0) {
+                                            echo  $months . ' месеца и ' . $days . ' дни';
+                                        } else {
+                                            echo $days . ' дни';
+                                            if($days <= 2){
+                                                daysLeftJob($row[0]['email'],$rowAddedJobs[$n]['title']);
+                                            }
+                                        } ?>
+                                    </abbr></td>
+                                <td><?php echo $rowAddedJobs[$n]['count']; ?></td>
                             </tr>
 
 

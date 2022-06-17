@@ -47,8 +47,6 @@ if (isset($_POST['btn-change-pass-user'])) {
     }
 }
 
-
-
 //candidates
 
 $queryAdd = 'c join tb_register_client rc on rc.id = c.profileid join tb_jobs j on j.id = c.jobid join tm_status s on s.id = c.status join tb_city city on city.id = c.city ';
@@ -59,6 +57,13 @@ $rowCandidates = $DB->fetchQuery($queryCandidates);
 $rowCandidates2 = $DB->fetchQuery($queryCandidates2);
 $candidates = $DB->query($queryCandidates);
 $candidates2 = $DB->query($queryCandidates2);
+
+//view candidate 
+if(isset($_GET['id'])){
+$idCandidate = $_GET['id'];
+$queryCandidates1_1 = $DB->selectAll('tb_candidates')->conc($queryAdd)->where(array('rc.username' => $DB->str($username), 'c.id_c'=> $idCandidate))->execute();
+$rowCandidates1_1 = $DB->fetchQuery($queryCandidates1_1);
+}
 
 //liked jobs
 $queryAdd3 = 'lj join tb_register_client rc on rc.id = lj.profileid join tb_jobs j on j.id = lj.jobid ';
